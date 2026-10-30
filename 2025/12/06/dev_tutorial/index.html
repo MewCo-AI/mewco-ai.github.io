@@ -1,59 +1,241 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.6.2" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.6.2" type="image/png" sizes="32x32"><meta name="description" content="​    · 欢迎观看开源AI助手配套开发视频教程，深入解析各模块代码，助力大家进行二次开发与创造专属自己的AI助手。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="开源AI助手开发教程">
-<meta property="og:url" content="https://mewco-ai.github.io/2025/12/06/dev_tutorial/index.html">
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone=no">
+<meta name="description" content="开源 AI 助手 14 期开发教程：架构设计、ASR、LLM、TTS、VLM、声纹识别、智能体、主动感知、Live2D / MMD / VRM 角色、通用自主操控、双龙虾接口与 IM 机器人源码解析。">
+<meta name="theme-color" content="#f5f8ff" data-theme-color>
+<meta property="og:type" content="website">
+<meta property="og:title" content="开源AI助手开发教程 — MewCo-AI Studio">
+<meta property="og:description" content="开源 AI 助手 14 期开发教程：架构设计、ASR、LLM、TTS、VLM、声纹识别、智能体、主动感知、Live2D / MMD / VRM 角色、通用自主操控、双龙虾接口与 IM 机器人源码解析。">
+<meta property="og:url" content="https://mewco-ai.github.io/tutorial/dev_tutorial/index.html">
 <meta property="og:site_name" content="MewCo-AI Studio">
-<meta property="og:description" content="​    · 欢迎观看开源AI助手配套开发视频教程，深入解析各模块代码，助力大家进行二次开发与创造专属自己的AI助手。">
+<meta property="og:image" content="https://mewco-ai.github.io/images/img/studio_banner.jpg">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-12-06T02:21:59.591Z">
-<meta property="article:modified_time" content="2026-08-29T02:40:30.608Z">
-<meta property="article:author" content="MewCo-AI工作室">
-<meta property="article:tag" content="MewCo-AI工作室">
-<meta name="twitter:card" content="summary"><title>开源AI助手开发教程 | MewCo-AI Studio</title><link ref="canonical" href="https://mewco-ai.github.io/2025/12/06/dev_tutorial/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.6.2"><script>var Stun = window.Stun || {};
-var CONFIG = {
-  root: '/',
-  algolia: undefined,
-  assistSearch: undefined,
-  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
-  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
-  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
-  postWidget: {"endText":true},
-  nightMode: {"enable":true},
-  back2top: {"enable":true},
-  codeblock: {"style":"default","highlight":"light","wordWrap":false},
-  reward: false,
-  fancybox: false,
-  zoomImage: {"gapAside":"20px"},
-  galleryWaterfall: undefined,
-  lazyload: false,
-  pjax: undefined,
-  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
-  shortcuts: undefined,
-  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
-  sourcePath: {"js":"js","css":"css","images":"images"},
-};
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mewco-ai.github.io/images/img/studio_banner.jpg">
+<title>开源AI助手开发教程 — MewCo-AI Studio</title>
+<link rel="canonical" href="https://mewco-ai.github.io/tutorial/dev_tutorial/index.html">
+<link rel="icon" href="../../../../images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="icon" href="../../../../images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var saved = localStorage.getItem("mewco-theme");
+    if (saved !== "dark" && saved !== "light") {
+      saved = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    root.setAttribute("data-theme", saved);
+  } catch (e) {
+    root.setAttribute("data-theme", "light");
+  }
+  root.classList.add("js");
+})();
+</script>
+<link rel="stylesheet" href="../../../../css/site.css">
+<script defer src="../../../../js/site.js"></script>
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 5.4.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">新闻动态</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">项目一览</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/about/"><span class="header-nav-menu-item__icon"><i class="fas fa-link"></i></span><span class="header-nav-menu-item__text">关于我们</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">MewCo-AI Studio</div><div class="header-banner-info__subtitle">科技之花应自由绽放，为文明进步铺设舞台</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">开源AI助手开发教程</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2025-12-06</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2026-08-29</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">阅读次数</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body"><p>​    · 欢迎观看开源AI助手配套开发视频教程，深入解析各模块代码，助力大家进行二次开发与创造专属自己的AI助手。<span id="more"></span></p>
+</head>
+<body class="">
+<a class="skip-link" href="#main">跳到主要内容</a>
+<div class="read-progress" data-read-progress aria-hidden="true"><span></span></div>
+<header class="site-header" data-header>
+  <div class="container nav-wrap">
+    <a class="brand" href="../../../../index.html" aria-label="MewCo-AI 首页">
+  <span class="brand-mark" aria-hidden="true">🍁</span>
+  <span class="brand-text"><strong>MewCo-AI</strong></span>
+</a>
+    <nav class="site-nav" id="site-nav" data-nav aria-label="主导航">
+      <a class="nav-link" href="../../../../index.html">首页</a><a class="nav-link" href="../../../../categories/index.html">项目一览</a><a class="nav-link" href="../../../../tutorial/use_tutorial/index.html">使用教程</a><a class="nav-link is-active" href="../../../../tutorial/dev_tutorial/index.html" aria-current="page">开发教程</a><a class="nav-link" href="../../../../about/index.html">关于我们</a>
+      <div class="nav-extra">
+        <a class="btn btn-ghost btn-sm" href="https://github.com/MewCo-AI/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg> GitHub</a>
+        <a class="btn btn-soft btn-sm" href="https://space.bilibili.com/106439263/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="m7 2 3 4M17 2l-3 4M8 12h2M14 12h2"/></svg> 官方 B 站</a>
+      </div>
+    </nav>
+    <div class="nav-actions">
+      <a class="nav-gh" href="https://github.com/MewCo-AI/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg><span>GitHub</span></a>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换深色或浅色模式" aria-pressed="false">
+        <span class="theme-opt theme-sun" aria-hidden="true">☀️</span>
+        <span class="theme-opt theme-moon" aria-hidden="true">🌙</span>
+      </button>
+      <button class="menu-btn" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-nav" aria-label="打开导航菜单">
+        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <div class="breadcrumb"><a href="../../../../index.html">首页</a><span class="sep">/</span><a href="../../../../categories/index.html">项目一览</a><span class="sep">/</span><span class="current">开源AI助手开发教程</span></div>
+    <div class="article-brandline">
+  <img src="../../../../images/maiac/asstcomm_logo.png" alt="开源 AI 助手源码解析 标志" width="52" height="52">
+  <div><div class="name">开源 AI 助手源码解析</div></div>
+</div>
+    <h1 class="">读源码、改模块，<br>亲手创造<span class="grad">专属 AI 助手</span></h1>
+    <p class="page-hero-lead">欢迎观看开源 AI 助手配套开发视频教程。14 期内容深入解析各模块代码，从架构、语音、视觉到智能体与虚拟形象，帮助你完成二次开发，创造属于自己的 AI 助手。</p>
+    <div class="article-meta"><span class="meta-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg> 更新于 2026-08-29</span></div>
+    <div class="article-actions"><a class="btn btn-primary" href="https://space.bilibili.com/106439263/" target="_blank" rel="noopener"><span>前往 B 站频道</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="m7 2 3 4M17 2l-3 4M8 12h2M14 12h2"/></svg></a><a class="btn btn-ghost" href="https://github.com/MewCo-AI/mewco_ai_assistant_comm" target="_blank" rel="noopener"><span>查看源码</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg></a></div>
+  </div>
+</section><section class="article-section">
+  <div class="container article-layout">
+    <article class="article-main">
+      <div class="article-body" data-article-body>
+<p class="article-intro">本系列以枫云AI助手社区版源码为基础，逐模块拆解一个完整 AI 助手是如何被搭建出来的。建议具备 Python 基础，并按顺序完成第一季的学习后再进入第二季。</p>
+<div class="callout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m8 6-6 6 6 6M16 6l6 6-6 6M13.5 4l-3 16"/></svg><div><strong>开发准备：</strong>请提前安装 Python、PyCharm 与 Git，并克隆 <a href="https://github.com/MewCo-AI/mewco_ai_assistant_comm" target="_blank" rel="noopener">GitHub 仓库</a>。视频中的模型与依赖可按需替换，理解模块之间的数据流比记住具体实现更重要。</div></div>
 
-        <h3 id="第一季"   >
-          <a href="#第一季" class="heading-link"><i class="fas fa-link"></i></a><a href="#第一季" class="headerlink" title="第一季"></a><center>第一季</center></h3>
-      <p>​    <strong>01期 开源项目概览</strong>：本期我们将带大家全面了解AI助手社区版开源项目的核心特性与教程规划，讲解软件的分层架构设计，并指导开发者完成Python环境配置、PyCharm项目导入与解释器设置等初始化步骤。还会深入解析主程序的模块化设计、核心功能实现，助力大家搭建开发环境，为后续二次开发与创造专属AI助手奠定基础。<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1PaSTBEEGt" >点此观看</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-<p>​    <strong>02期 语音识别(ASR)模块</strong>：本期我们将学习语音识别模块，讲解语音识别的基本原理与流程，介绍Sherpa-ONNX开源语音处理框架，以及开源的高精度多语言SenseVoice语音情感场景识别模型，并解析语音识别模块的代码实现。<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1yQ2yBEEhT" >点此观看</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-<p>​    <strong>03期 大语言模型(LLM)模块</strong>：本期我们将深入探索AI助手的大语言模型模块的奥秘，从Transformer架构与自注意力机制入手，拆解大语言模型的基本原理与运行流程；熟悉OpenAI协议及对比Transformers、Ollama等主流运行框架的特点；推荐适配不同场景的云端与本地开源大模型；最后解析大语言模型模块的代码实现。<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1a1meBiEUf" >点此观看</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-<p>​    <strong>04期 语音合成(TTS)模块</strong>：本期我们将深入探索语音合成(TTS)模块，让AI助手拥有自然流畅的说话能力。从语音合成的基本原理与技术分类，到小模型(edge-tts、VITS)和大模型(GPT-SoVITS、CosyVoice等)的选型，再到代码实现环节，我们将全方位拆解TTS模块的开发要点，带您掌握如何让AI助手拥有说话能力。<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1V8qzBoEvx" >点此观看</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-<p>​    <strong>05期 视觉语言模型(VLM)模块</strong>：本期我们将深入探索AI助手的视觉语言模型模块。从视觉语言模型的基本原理与工作机制入手，了解VLM如何将视觉与语言信息融合；熟悉OpenAI兼容协议及对比Ollama、LM Studio等主流运行框架的特点；推荐适配不同场景的云端与本地开源视觉语言模型；分析摄像头画面识别、屏幕内容分析和上传图片问答三大应用场景。<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1r4BkBEEnB" >点此观看</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-<p>​    <strong>06期 声纹识别(VPR)模块</strong>：本期我们将深入探索声纹识别模块，揭秘如何让AI助手“认出”您。从声纹识别的基本原理、3D-Speaker项目的CAM++模型优势，到其在实现专属交互等场景的关键应用，再到具体的代码实现，我们将一步步学习为AI助手装上“识人之耳”，打造更专属的AI交互体验。<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1VeivBCEN9" >点此观看</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-<p>​    <strong>07期 智能体(Agent)模块</strong>：本期我们将深入探索智能体(Agent)模块，揭秘如何让AI助手具备”感知-决策-行动”的完整能力。从智能体的基本原理、三大类型分类，到创意生成、信息感知和系统控制的具体应用场景，再到代码实现的详细解析，我们将一步步学习为AI助手装上”智能大脑和双手”。<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1VW6dB1E2s" >点此观看</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-<p>​    <strong>08期 主动感知对话模块</strong>：本期我们将聚焦于赋予AI助手”灵魂”的主动感知对话模块。从打破被动应答的局限，到根据时间、环境、视觉信息主动发起话题，再到代码中调度与多模态感知的实现逻辑，我们将一步步学习如何让AI助手变得更具人情味和主动性。<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV15yFZzBE7M" >点此观看</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-<p>​    <strong>09期 Live2D角色及桌宠模块</strong>：本期我们将聚焦于赋予AI助手”颜值”与”形态”的Live2D角色及桌宠模块。从Live2D技术的二次元视觉优势，到PixiJS的高效渲染，再到PySide6实现的桌面交互，我们将一步步学习如何将Web端的Live2D角色”搬”上您的电脑桌面，打造一个可缩放、可交互的生动助手。<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1BpZxB1Ety" >点此观看</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-<p>​    <strong>10期 MMD 3D角色模块</strong>：本期我们将聚焦于打造更具立体感的MMD 3D角色模块。从MMD技术在3D虚拟形象领域的应用，到Three.js与WebGL的3D渲染原理，再到Flask构建的后端服务架构，我们将一步步学习如何在Web端流畅展示高精度的3D角色，并实现从“二次元平面”到“三次元立体”的视觉跨越。<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV15vf1BAEzu" >点此观看</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-<p>​    <strong>11期 VRM 3D角色模块</strong>：本期我们将聚焦于打造更具表现力、交互性与沉浸感的VRM 3D角色模块。从VRM作为Web端轻量化3D角色标准的优势，到基于Three.js与three-vrm的骨骼与表情动画系统，我们将一步步学习如何在Web端实现VRM模型展示，并赋予其实时口型、呼吸、眨眼及触控互动的流程，让AI助手真正“活”起来。<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mKPYzwEhL" >点此观看</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<h2 id="season1">第一季 · 核心模块</h2>
+<p>从项目架构与开发环境开始，依次拆解语音识别、大语言模型、语音合成、视觉、声纹、智能体、主动感知与三种虚拟形象模块。</p>
+<div class="video-list"><a class="video-card reveal" href="https://www.bilibili.com/video/BV1PaSTBEEGt" target="_blank" rel="noopener">
+  <div class="video-top"><span class="video-index">EP.01</span><span class="pill">架构</span></div>
+  <h3>开源项目概览</h3>
+  <p>全面了解社区版开源项目的核心特性与教程规划，讲解分层架构设计，并完成 Python 环境配置、PyCharm 项目导入与解释器设置等初始化步骤，深入解析主程序的模块化设计。</p>
+  <span class="video-link">在 B 站观看<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+</a><a class="video-card reveal" href="https://www.bilibili.com/video/BV1yQ2yBEEhT" target="_blank" rel="noopener">
+  <div class="video-top"><span class="video-index">EP.02</span><span class="pill">ASR</span></div>
+  <h3>语音识别（ASR）模块</h3>
+  <p>讲解语音识别的基本原理与流程，介绍 Sherpa-ONNX 开源语音处理框架，以及高精度多语言 SenseVoice 语音情感场景识别模型，并解析 ASR 模块的代码实现。</p>
+  <span class="video-link">在 B 站观看<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+</a><a class="video-card reveal" href="https://www.bilibili.com/video/BV1a1meBiEUf" target="_blank" rel="noopener">
+  <div class="video-top"><span class="video-index">EP.03</span><span class="pill">LLM</span></div>
+  <h3>大语言模型（LLM）模块</h3>
+  <p>从 Transformer 架构与自注意力机制入手，拆解大语言模型原理与运行流程；熟悉 OpenAI 协议并对比 Transformers、Ollama 等框架，最后解析 LLM 模块代码。</p>
+  <span class="video-link">在 B 站观看<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+</a><a class="video-card reveal" href="https://www.bilibili.com/video/BV1V8qzBoEvx" target="_blank" rel="noopener">
+  <div class="video-top"><span class="video-index">EP.04</span><span class="pill">TTS</span></div>
+  <h3>语音合成（TTS）模块</h3>
+  <p>从语音合成原理与技术分类，到小模型（edge-tts、VITS）和大模型（GPT-SoVITS、CosyVoice 等）的选型，再到代码实现，全方位拆解 TTS 模块的开发要点。</p>
+  <span class="video-link">在 B 站观看<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+</a><a class="video-card reveal" href="https://www.bilibili.com/video/BV1r4BkBEEnB" target="_blank" rel="noopener">
+  <div class="video-top"><span class="video-index">EP.05</span><span class="pill">VLM</span></div>
+  <h3>视觉语言模型（VLM）模块</h3>
+  <p>了解 VLM 如何融合视觉与语言信息；熟悉 OpenAI 兼容协议并对比 Ollama、LM Studio 等框架；分析摄像头画面识别、屏幕内容分析与上传图片问答三大场景。</p>
+  <span class="video-link">在 B 站观看<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+</a><a class="video-card reveal" href="https://www.bilibili.com/video/BV1VeivBCEN9" target="_blank" rel="noopener">
+  <div class="video-top"><span class="video-index">EP.06</span><span class="pill">VPR</span></div>
+  <h3>声纹识别（VPR）模块</h3>
+  <p>从声纹识别基本原理、3D-Speaker 项目 CAM++ 模型优势，到专属交互场景与具体代码实现，一步步为 AI 助手装上“识人之耳”。</p>
+  <span class="video-link">在 B 站观看<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+</a><a class="video-card reveal" href="https://www.bilibili.com/video/BV1VW6dB1E2s" target="_blank" rel="noopener">
+  <div class="video-top"><span class="video-index">EP.07</span><span class="pill">Agent</span></div>
+  <h3>智能体（Agent）模块</h3>
+  <p>揭秘如何让 AI 助手具备“感知—决策—行动”的完整能力。从智能体基本原理、三大类型分类，到创意生成、信息感知与系统控制场景，再到代码实现详细解析。</p>
+  <span class="video-link">在 B 站观看<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+</a><a class="video-card reveal" href="https://www.bilibili.com/video/BV15yFZzBE7M" target="_blank" rel="noopener">
+  <div class="video-top"><span class="video-index">EP.08</span><span class="pill">主动感知</span></div>
+  <h3>主动感知对话模块</h3>
+  <p>聚焦赋予助手“灵魂”的主动感知对话模块：打破被动应答局限，根据时间、环境与视觉信息主动发起话题，并解析代码中的调度与多模态感知实现逻辑。</p>
+  <span class="video-link">在 B 站观看<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+</a><a class="video-card reveal" href="https://www.bilibili.com/video/BV1BpZxB1Ety" target="_blank" rel="noopener">
+  <div class="video-top"><span class="video-index">EP.09</span><span class="pill">Live2D</span></div>
+  <h3>Live2D 角色及桌宠模块</h3>
+  <p>从 Live2D 的二次元视觉优势，到 PixiJS 高效渲染与 PySide6 实现的桌面交互，学习如何把 Web 端角色“搬”上电脑桌面，打造可缩放、可交互的生动助手。</p>
+  <span class="video-link">在 B 站观看<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+</a><a class="video-card reveal" href="https://www.bilibili.com/video/BV15vf1BAEzu" target="_blank" rel="noopener">
+  <div class="video-top"><span class="video-index">EP.10</span><span class="pill">MMD</span></div>
+  <h3>MMD 3D 角色模块</h3>
+  <p>从 MMD 在 3D 虚拟形象领域的应用，到 Three.js 与 WebGL 渲染原理，再到 Flask 后端服务架构，学习在 Web 端流畅展示高精度 3D 角色。</p>
+  <span class="video-link">在 B 站观看<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+</a><a class="video-card reveal" href="https://www.bilibili.com/video/BV1mKPYzwEhL" target="_blank" rel="noopener">
+  <div class="video-top"><span class="video-index">EP.11</span><span class="pill">VRM</span></div>
+  <h3>VRM 3D 角色模块</h3>
+  <p>从 VRM 作为 Web 端轻量化 3D 角色标准的优势，到基于 Three.js 与 three-vrm 的骨骼与表情动画系统，实现实时口型、呼吸、眨眼及触控互动。</p>
+  <span class="video-link">在 B 站观看<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+</a></div>
 
-        <h3 id="第二季"   >
-          <a href="#第二季" class="heading-link"><i class="fas fa-link"></i></a><a href="#第二季" class="headerlink" title="第二季"></a><center>第二季</center></h3>
-      <p>​    <strong>12期 通用自主操控模块</strong>：本期学习通用自主操控模块，揭秘如何让AI助手真正“接管”你的电脑。从Lite版OCR文本操控到Pro版VLM视觉操控的双引擎架构，到“一次性规划+顺序执行”与“多模态感知+单步闭环”两种核心策略，再到代码的逐行解析，我们将一步步学习赋予AI助手精准控制电脑的能力。<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Bzum6WEte" >点此观看</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-<p>​    <strong>13期 双龙虾接口模块</strong>：本期我们来探索双龙虾接口模块，揭秘如何让AI助手同时对接OpenClaw与QwenPaw两大开源龙虾智能体。从通过OpenAI协议对接原版开源龙虾OpenClaw，到通过MQTT协议对接阿里开源类龙虾QwenPaw，再到代码的逐行解析，我们将一步步学习赋予AI助手与电脑交互的能力。<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1TUbk6rEQ1" >点此观看</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-<p>​    <strong>14期 IM聊天机器人接口模块</strong>：本期我们聚焦IM聊天机器人接口模块，让AI助手真正走进日常聊天软件。我们将逐行解析代码，手把手带您搭建跨平台的智能聊天机器人。让AI助手化身私人秘书，随时随地在三大IM聊天软件上对话。<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1jP816AE2S" >点此观看</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2025/10/07/use_tutorial/"><span class="paginator-prev__text">AI助手使用教程</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">官网概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E5%AD%A3"><span class="toc-number">1.</span> <span class="toc-text">
-          第一季</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%AD%A3"><span class="toc-number">2.</span> <span class="toc-text">
-          第二季</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.jpg" alt="avatar"></div><p class="sidebar-ov-author__text">MewCo-AI Official Web</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/MewCo-AI/" target="_blank" rel="noopener"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span><span class="sidebar-ov-social-item__text">GitHub</span></a><a class="sidebar-ov-social-item" href="https://space.bilibili.com/106439263/" target="_blank" rel="noopener"><span class="sidebar-ov-social-item__icon"><i class="fab fa-youtube"></i></span><span class="sidebar-ov-social-item__text">Bilibili</span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">6</div><div class="sidebar-ov-state-item__name">新闻动态</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">0</div><div class="sidebar-ov-state-item__name">项目一览</div></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2026</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>MewCo-AI工作室</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">访问人数</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">浏览总量</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script><script src="/js/utils.js?v=2.6.2"></script><script src="/js/stun-boot.js?v=2.6.2"></script><script src="/js/scroll.js?v=2.6.2"></script><script src="/js/header.js?v=2.6.2"></script><script src="/js/sidebar.js?v=2.6.2"></script></body></html>
+<h2 id="season2">第二季 · 进阶能力</h2>
+<p>在第一季的基础上，进一步实现电脑自主操控、双龙虾超级智能体接口与 IM 聊天机器人，让助手真正具备行动力。</p>
+<div class="video-list"><a class="video-card reveal" href="https://www.bilibili.com/video/BV1Bzum6WEte" target="_blank" rel="noopener">
+  <div class="video-top"><span class="video-index">EP.12</span><span class="pill">自主操控</span></div>
+  <h3>通用自主操控模块</h3>
+  <p>揭秘如何让助手真正“接管”电脑：从 Lite 版 OCR 文本操控到 Pro 版 VLM 视觉操控的双引擎架构，到“一次性规划 + 顺序执行”与“多模态感知 + 单步闭环”两种策略，再到代码逐行解析。</p>
+  <span class="video-link">在 B 站观看<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+</a><a class="video-card reveal" href="https://www.bilibili.com/video/BV1TUbk6rEQ1" target="_blank" rel="noopener">
+  <div class="video-top"><span class="video-index">EP.13</span><span class="pill">双龙虾</span></div>
+  <h3>双龙虾接口模块</h3>
+  <p>探索如何让助手同时对接 OpenClaw 与 QwenPaw 两大开源龙虾智能体：从 OpenAI 协议对接 OpenClaw、MQTT 协议对接 QwenPaw，到代码逐行解析。</p>
+  <span class="video-link">在 B 站观看<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+</a><a class="video-card reveal" href="https://www.bilibili.com/video/BV1jP816AE2S" target="_blank" rel="noopener">
+  <div class="video-top"><span class="video-index">EP.14</span><span class="pill">IM</span></div>
+  <h3>IM 聊天机器人接口模块</h3>
+  <p>聚焦 IM 聊天机器人接口模块，逐行解析代码，手把手搭建跨平台智能聊天机器人，让助手化身私人秘书，随时随地在三大 IM 软件上对话。</p>
+  <span class="video-link">在 B 站观看<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+</a></div>
+      </div>
+      <nav class="post-nav single" aria-label="文章翻页"><a class="post-nav-link prev" href="../../../../tutorial/use_tutorial/index.html">
+  <span class="label">← 上一篇</span>
+  <span class="title">AI助手使用教程</span>
+</a></nav>
+    </article>
+    <aside class="article-aside" aria-label="文章目录">
+      <div class="toc-card">
+        <div class="toc-title">本页目录</div>
+        <nav class="toc-list" data-toc>
+          <a href="#season1">第一季 · 核心模块</a><a href="#season2">第二季 · 进阶能力</a>
+        </nav>
+        <div class="toc-foot">
+          <a href="../../../../categories/index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg> 项目一览</a>
+          <a href="https://github.com/MewCo-AI/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg> GitHub 开源社区</a>
+          <a href="../../../../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V10Z"/><path d="M9 22V12h6v10"/></svg> 返回首页</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section><div class="cta-wrap">
+  <div class="container">
+    <div class="cta-panel reveal">
+      <div class="cta-copy">
+        <h2>不只是使用者，<br>也成为创造者</h2>
+        <p>源码全部开源。欢迎提交 Issue、Pull Request，或基于项目创造属于你自己的 AI 助手。</p>
+        <div class="cta-links"><a href="../../../../tutorial/use_tutorial/index.html">查看使用教程</a><a href="../../../../project/asstcomm/index.html">下载社区版</a><a href="https://ifdian.net/a/maplemiro" target="_blank" rel="noopener">支持我们</a></div>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-light" href="https://space.bilibili.com/106439263/" target="_blank" rel="noopener"><span>前往 B 站频道</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="m7 2 3 4M17 2l-3 4M8 12h2M14 12h2"/></svg></a>
+        <a class="btn btn-glass" href="https://github.com/MewCo-AI/mewco_ai_assistant_comm" target="_blank" rel="noopener"><span>GitHub 开源仓库</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="brand" href="../../../../index.html" aria-label="MewCo-AI 首页">
+  <span class="brand-mark" aria-hidden="true">🍁</span>
+  <span class="brand-text"><strong>MewCo-AI</strong></span>
+</a>
+        <p>MewCo-AI（枫云智能）是一支热爱科技与二次元文化的年轻团队，专注开源 AI 助手的公益探索，让每个人都能拥有属于自己的全能型 AI 助手。</p>
+      </div>
+      <div class="footer-col">
+        <h4>产品</h4>
+        <a href="../../../../project/asstcomm/index.html">枫云AI助手社区版</a>
+        <a href="../../../../project/asstlinux/index.html">枫云AI助手Linux版</a>
+        <a href="../../../../tutorial/engine/index.html">本地AI引擎插件</a>
+      </div>
+      <div class="footer-col">
+        <h4>资源</h4>
+        <a href="../../../../tutorial/use_tutorial/index.html">使用教程</a>
+        <a href="../../../../tutorial/dev_tutorial/index.html">开发教程</a>
+        <a href="../../../../categories/index.html">项目一览</a>
+      </div>
+      <div class="footer-col">
+        <h4>关于</h4>
+        <a href="../../../../about/index.html">关于我们</a>
+        <a href="../../../../index.html#news">最新动态</a>
+        <a href="https://github.com/MewCo-AI/" target="_blank" rel="noopener">GitHub 开源社区</a>
+        <a href="https://space.bilibili.com/106439263/" target="_blank" rel="noopener">官方 B 站</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 MewCo-AI 枫云智能工作室<span class="sep">·</span>开源公益项目<span class="sep">·</span>让 AI 乐趣融入美好生活</div>
+      <div class="footer-motto">科技之花应自由绽放 / 为文明进步铺设舞台</div>
+    </div>
+  </div>
+</footer>
+<button class="backtop" type="button" data-backtop aria-label="回到页面顶部"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+</body>
+</html>
