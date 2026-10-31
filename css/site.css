@@ -2176,11 +2176,6 @@ html[data-theme="dark"] .page-hero::before {
   letter-spacing: 0.05em;
   color: var(--faint);
 }
-.version-tag.linux {
-  color: var(--brand);
-  border-color: var(--brand-soft);
-  background: var(--brand-softer);
-}
 .resource-desc {
   margin-top: 7px;
   font-size: 13px;
