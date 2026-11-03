@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>虚境计划 Never Realm · 车机版 | 驰而有息</title>
+    <link rel="icon" type="image/png" href="image/nr_site_logo.png">
+    <link rel="apple-touch-icon" href="image/nr_site_logo.png">
+    <style>
+        :root{--bg-body:#eff6ff;--bg-card:#ffffff;--text-main:#1e293b;--text-secondary:#64748b;--accent:#3b82f6;--accent-soft:#dbeafe;--accent-dark:#2563eb;--border-light:#e2e8f0;--shadow-sm:0 4px 6px -1px rgba(0,0,0,0.05);--shadow-lg:0 10px 25px -3px rgba(0,0,0,0.08);--radius-md:16px;--radius-lg:24px;--font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+        *{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth;scroll-padding-top:80px}
+        body{font-family:var(--font-sans);background-color:var(--bg-body);color:var(--text-main);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+        a{text-decoration:none;color:inherit}
+        img{max-width:100%;display:block}
+        .container{max-width:1200px;margin:0 auto;padding:0 24px}
+        .site-header{position:fixed;top:0;left:0;right:0;z-index:100;background:#262626;border-bottom:1px solid rgba(255,255,255,0.08)}
+        .nav-wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:24px}
+        .brand{display:flex;align-items:center;height:100%;flex:0 1 auto;min-width:0}
+        .brand img{height:38px;width:auto;max-width:220px;object-fit:contain;display:block}
+        .nav-links{display:flex;gap:28px}
+        .nav-links a{font-size:15px;font-weight:500;color:rgba(255,255,255,0.72);transition:color 0.2s;white-space:nowrap}
+        .nav-links a:hover,.nav-links a.active{color:#ffffff}
+        .release-chip{font-size:13px;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,0.12);color:#ffffff;font-weight:600;border:1px solid rgba(255,255,255,0.25);white-space:nowrap}
+        .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 20px;border-radius:999px;font-size:14px;font-weight:600;transition:all 0.2s;cursor:pointer;border:none}
+        .btn-primary{background-color:var(--accent);color:#fff;box-shadow:0 4px 12px rgba(59,130,246,0.3)}
+        .btn-primary:hover{background-color:var(--accent-dark);transform:translateY(-1px)}
+        .btn-outline{background-color:transparent;color:var(--accent-dark);border:1.5px solid var(--accent)}
+        .btn-outline:hover{background-color:var(--accent-soft)}
+        .hero{position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-top:64px;min-height:max(640px,calc(100vh - 64px));padding:80px 0}
+        .hero-bg{position:absolute;inset:0;background-image:url('image/cover.jpg');background-size:cover;background-position:center;z-index:1}
+        .hero-content{position:relative;z-index:3;text-align:center;color:#fff;padding:0 24px;max-width:820px}
+        .hero-title{font-size:clamp(36px,6vw,64px);font-weight:800;line-height:1.2;margin-bottom:16px;letter-spacing:-0.02em;text-shadow:0 4px 20px rgba(0,0,0,0.3)}
+        .hero-slogan{font-size:clamp(18px,3vw,24px);font-weight:600;margin-bottom:24px;letter-spacing:4px;color:#dbeafe}
+        .hero-sub{font-size:16px;opacity:0.9;margin-bottom:40px;line-height:1.8;text-shadow:0 2px 10px rgba(0,0,0,0.4)}
+        .hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+        .hero-buttons .btn-primary{background:#fff;color:var(--accent-dark);box-shadow:0 4px 20px rgba(0,0,0,0.15)}
+        .hero-buttons .btn-primary:hover{background:var(--bg-body)}
+        .hero-buttons .btn-outline{border-color:rgba(255,255,255,0.6);color:#fff}
+        .hero-buttons .btn-outline:hover{background:rgba(255,255,255,0.1)}
+        .hero-compat{display:inline-block;margin-top:28px;padding:10px 22px;border-radius:999px;background:rgba(0,0,0,0.3);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.22);font-size:13px;line-height:1.7;color:rgba(255,255,255,0.9);max-width:100%}
+        .hero-compat strong{color:#fff;font-weight:700;letter-spacing:.5px;margin-right:4px}
+        .section{padding:100px 0}
+        .section-header{text-align:center;max-width:720px;margin:0 auto 60px}
+        .eyebrow{display:inline-block;font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}
+        .section-title{font-size:clamp(28px,4vw,40px);font-weight:800;margin-bottom:16px;line-height:1.25}
+        .section-desc{font-size:16px;color:var(--text-secondary);line-height:1.7}
+        .feature-row{display:flex;align-items:center;gap:60px;margin-bottom:100px}
+        .feature-row:last-child{margin-bottom:0}
+        .feature-row.reverse{flex-direction:row-reverse}
+        .feature-text{flex:1;min-width:0}
+        .feature-text .num{font-size:13px;color:var(--accent);letter-spacing:3px;font-weight:700;margin-bottom:12px}
+        .feature-text h3{font-size:28px;font-weight:800;margin-bottom:16px;line-height:1.3}
+        .feature-text p{font-size:16px;color:var(--text-secondary);line-height:1.8;margin-bottom:24px}
+        .feature-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+        .feature-list li{position:relative;padding-left:22px;font-size:15px;color:var(--text-main)}
+        .feature-list li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent-soft)}
+        .feature-image{flex:1.1;min-width:0;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);border:4px solid #fff;background:#fff;transition:transform 0.3s ease,box-shadow 0.3s ease}
+        .feature-image:hover{transform:translateY(-6px);box-shadow:0 20px 40px -5px rgba(59,130,246,0.15)}
+        .feature-image img{width:100%;height:auto;display:block;border-radius:calc(var(--radius-lg) - 4px)}
+        .ability-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+        .ability-card{background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-md);padding:28px 24px;transition:transform 0.3s,box-shadow 0.3s}
+        .ability-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--accent-soft)}
+        .ability-card .idx{font-size:13px;color:var(--accent);font-weight:700;letter-spacing:2px;margin-bottom:12px}
+        .ability-card h4{font-size:17px;font-weight:700;margin-bottom:10px}
+        .ability-card p{font-size:14px;color:var(--text-secondary);line-height:1.6}
+        .compat-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+        .compat-card{position:relative;background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:36px 32px;box-shadow:var(--shadow-sm);transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s}
+        .compat-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+        .compat-card.featured{border-color:var(--accent-soft);background:linear-gradient(180deg,#f0f7ff 0%,#ffffff 60%)}
+        .compat-card .badge{display:inline-block;font-size:12px;font-weight:700;letter-spacing:1px;padding:5px 14px;border-radius:999px;background:var(--accent-soft);color:var(--accent-dark);margin-bottom:18px}
+        .compat-card h4{font-size:20px;font-weight:800;margin-bottom:12px;line-height:1.35}
+        .compat-card p{font-size:14.5px;color:var(--text-secondary);line-height:1.75;margin-bottom:22px}
+        .compat-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+        .compat-list li{position:relative;padding-left:22px;font-size:14px;color:var(--text-main)}
+        .compat-list li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent-soft)}
+        .brand-chips{display:flex;flex-wrap:wrap;gap:10px}
+        .brand-chips span{font-size:13.5px;font-weight:600;padding:8px 16px;border-radius:999px;background:var(--bg-body);border:1px solid var(--border-light);color:var(--text-main);transition:all 0.2s;cursor:default}
+        .brand-chips span:hover{border-color:var(--accent);color:var(--accent-dark);background:var(--accent-soft);transform:translateY(-2px)}
+        .brand-chips span.more{background:transparent;border-style:dashed;color:var(--text-secondary);font-weight:500}
+        .compat-note{margin-top:28px;text-align:center;font-size:13px;color:#94a3b8;line-height:1.7}
+        .timeline{max-width:800px;margin:0 auto;position:relative;padding-left:32px}
+        .timeline::before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--accent),var(--accent-soft))}
+        .tl-item{position:relative;margin-bottom:40px}
+        .tl-item:last-child{margin-bottom:0}
+        .tl-item::before{content:"";position:absolute;left:-31px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--bg-body);border:3px solid var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+        .tl-item .date{font-size:14px;color:var(--accent);font-weight:700;margin-bottom:6px}
+        .tl-item h4{font-size:18px;font-weight:700;margin-bottom:6px}
+        .tl-item p{font-size:15px;color:var(--text-secondary)}
+        .co-cards{display:flex;gap:30px;justify-content:center;flex-wrap:wrap}
+        .co-card{background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:40px 32px;text-align:center;width:340px;max-width:100%;box-shadow:var(--shadow-sm);transition:transform 0.3s}
+        .co-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+        .co-card .logo{width:72px;height:72px;border-radius:20px;margin:0 auto 20px;overflow:hidden;background:#f8fafc}
+        .co-card .logo img{width:100%;height:100%;object-fit:contain}
+        .co-card h4{font-size:20px;font-weight:800;margin-bottom:6px}
+        .co-card .en{font-size:12px;color:var(--text-secondary);letter-spacing:2px;margin-bottom:16px}
+        .co-card p{font-size:14px;color:var(--text-secondary);line-height:1.7;margin-bottom:20px}
+        .co-card .role{display:inline-block;font-size:13px;padding:6px 16px;border-radius:999px;background:var(--accent-soft);color:var(--accent-dark);font-weight:600}
+        .site-footer{background:#fff;border-top:1px solid var(--border-light);padding:48px 0;text-align:center}
+        .f-copy{font-size:13px;color:#94a3b8}
+        @media (max-width:1080px){.nav-links{gap:20px}.nav-links a{font-size:14px}}
+        @media (max-width:968px){.feature-row,.feature-row.reverse{flex-direction:column;gap:32px;margin-bottom:60px}.feature-text{order:1}.feature-image{order:2;width:100%;flex:none}.compat-grid{grid-template-columns:1fr}}
+        @media (max-width:768px){.nav-links{display:none}.brand img{height:30px;max-width:52vw}.section{padding:60px 0}.co-cards{flex-direction:column;align-items:center}.hero{padding:60px 0;min-height:auto}.hero-compat{font-size:12px;padding:8px 16px}.compat-card{padding:28px 22px}}
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a class="brand" href="#top">
+                <img src="image/nr_logo.png" alt="虚境计划 Never Realm · 车机版">
+            </a>
+            <nav class="nav-links">
+                <a href="#scenes">应用场景</a>
+                <a href="#ability">能力矩阵</a>
+                <a href="#compat">适配车机</a>
+                <a href="#roadmap">发布动态</a>
+                <a href="#co">联合出品</a>
+            </nav>
+            <span class="release-chip">2026.12 · 敬请期待</span>
+        </div>
+    </header>
+    <main>
+        <section class="hero" id="top">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">虚境计划 车机版</h1>
+                <p class="hero-slogan">⸢ 虚境片刻，驰而有息 ⸥</p>
+                <p class="hero-sub">
+                    当 AI 猫娘 Ruby 从桌面走进座舱——在每一次停靠、每一段归途、每一个想喘口气的片刻，愿世间每个人都能被温柔相待。
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://www.babelnucleus.com/" class="btn btn-primary" target="_blank" rel="noopener">预约手机版</a>
+                    <a href="#scenes" class="btn btn-primary">探索座舱体验</a>
+                    <a href="#compat" class="btn btn-outline">看看支持哪些车</a>
+                </div>
+                <p class="hero-compat">
+                    <strong>已支持</strong>弦月小车 Lunaxy UGV · 吉利 · 领克 · 零跑 · 理想 · 小鹏 · 蔚来 · 比亚迪 等内置浏览器车机
+                </p>
+            </div>
+        </section>
+        <section class="section" id="scenes">
+            <div class="container">
+                <div class="section-header">
+                    <span class="eyebrow">USE SCENES · 应用场景</span>
+                    <h2 class="section-title">每一个片刻，都有 Ruby 在</h2>
+                    <p class="section-desc">从驾驶小憩到座舱午休，从专注办公到虚境漫游——虚境计划车机版，把治愈装进每一次出行。</p>
+                </div>
+                <div class="feature-row">
+                    <div class="feature-text">
+                        <div class="num">SCENE 01</div>
+                        <h3>开车累了？<br>Ruby 陪你随时小憩</h3>
+                        <p>
+                            靠边停车、挂上 P 档，车机屏幕上的 Ruby 会轻声接住你的疲惫。
+                            她记得你今天开了多久、走了哪条路，也记得你上周说过的那句“最近有点累”。
+                        </p>
+                        <ul class="feature-list">
+                            <li>主动感知：结合行驶时长与泊车状态发起关怀</li>
+                            <li>轻语哄睡：声音自动放轻，陪你闭眼喘口气</li>
+                            <li>小憩定时：15 / 30 / 45 分钟，到点温柔唤醒</li>
+                        </ul>
+                    </div>
+                    <div class="feature-image">
+                        <img src="image/interior.jpg" alt="弦月小车 Lunaxy UGV 座舱实拍" loading="lazy">
+                    </div>
+                </div>
+                <div class="feature-row reverse">
+                    <div class="feature-text">
+                        <div class="num">SCENE 02</div>
+                        <h3>午休在车里，<br>也能高效睡一场</h3>
+                        <p>
+                            中午停好车、座椅放平，一键进入「助眠模式」。
+                            灯光渐暗、白噪音缓缓铺开，Ruby 把被子拉到你肩上——
+                            “眼睛闭上，Ruby 就在这儿，什么都不用想。”
+                        </p>
+                        <ul class="feature-list">
+                            <li>助眠模式：白噪音 + 渐弱语音 + 低亮画面</li>
+                            <li>睡前话题：记得你偏爱的助眠曲与小习惯</li>
+                        </ul>
+                    </div>
+                    <div class="feature-image">
+                        <img src="image/sleep_mode.jpg" alt="Ruby 助眠模式界面" loading="lazy">
+                    </div>
+                </div>
+                <div class="feature-row">
+                    <div class="feature-text">
+                        <div class="num">SCENE 03</div>
+                        <h3>车内办公，<br>交给「专注模式」</h3>
+                        <p>
+                            停车等人、提前到岗的那段时间，正好处理几封邮件、补一段方案。
+                            切到「专注模式」，Ruby 会安静守在面板后，偶尔抬眼看看你。
+                        </p>
+                        <ul class="feature-list">
+                            <li>番茄钟：25 分钟专注 / 5 分钟休息循环</li>
+                            <li>轻提醒：到点轻声提示，不打断思路</li>
+                            <li>陪伴静默：她安静待着喵，你累了就伸个懒腰</li>
+                        </ul>
+                    </div>
+                    <div class="feature-image">
+                        <img src="image/focus_mode.jpg" alt="Lunaxy UGV 车机主界面与 Ruby 专注陪伴" loading="lazy">
+                    </div>
+                </div>
+                <div class="feature-row reverse">
+                    <div class="feature-text">
+                        <div class="num">SCENE 04</div>
+                        <h3>回到「普通模式」，<br>她一直在家里</h3>
+                        <p>
+                            不开车的时候，虚境也是 Ruby 的家。客厅、厨房、窗边的夕阳——
+                            她会在面板后面翻东西、伸懒腰、偶尔抬头和你搭一句：“傍晚好喵～”
+                        </p>
+                        <ul class="feature-list">
+                            <li>场景随时间流动：清晨 / 正午 / 傍晚 / 深夜</li>
+                            <li>衣橱 / 装饰：自由装扮 Ruby 的小窝</li>
+                        </ul>
+                    </div>
+                    <div class="feature-image">
+                        <img src="image/normal_mode.jpg" alt="普通模式下的 Ruby 与她的房间" loading="lazy">
+                    </div>
+                </div>
+                <div class="feature-row">
+                    <div class="feature-text">
+                        <div class="num">SCENE 05</div>
+                        <h3>驶入虚境，<br>风景替你呼吸</h3>
+                        <p>
+                            充电时、露营时、只是想发呆时——打开「虚境漫游」，
+                            跟着 Ruby 走进花田与小屋，让车机变成一扇通往另一个世界的窗。
+                        </p>
+                        <ul class="feature-list">
+                            <li>虚境场景自由探索，解锁隐藏角落</li>
+                            <li>陪伴 / 商城 / 信箱，多元体验</li>
+                        </ul>
+                    </div>
+                    <div class="feature-image">
+                        <img src="image/home.jpg" alt="虚境漫游场景" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="ability" style="background:#fff;border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="eyebrow">ABILITY MATRIX · 能力矩阵</span>
+                    <h2 class="section-title">不止会哄睡，更像一位真正的同行者</h2>
+                    <p class="section-desc">塔心科技的 AI 陪伴引擎 × 枫云智能的车机生态能力，共同组成虚境计划车机版的完整体验——既可深度融入原生座舱，也能在主流新能源车机上即开即用。</p>
+                </div>
+                <div class="ability-grid">
+                    <div class="ability-card">
+                        <div class="idx">01</div>
+                        <h4>长期记忆</h4>
+                        <p>记得你说过的每一句话、每一次疲惫与每一次小憩，陪伴越久越懂你。</p>
+                    </div>
+                    <div class="ability-card">
+                        <div class="idx">02</div>
+                        <h4>主动感知对话</h4>
+                        <p>结合泊车状态、时段、行驶时长主动发起关怀，不再只是被动应答。</p>
+                    </div>
+                    <div class="ability-card">
+                        <div class="idx">03</div>
+                        <h4>治愈系语音</h4>
+                        <p>哄睡语音自动放轻放慢，情绪化 TTS 让“喵”都带着温度。</p>
+                    </div>
+                    <div class="ability-card">
+                        <div class="idx">04</div>
+                        <h4>助眠 / 定时</h4>
+                        <p>一键进入助眠模式，白噪音与渐弱语音配合，到点温柔唤醒。</p>
+                    </div>
+                    <div class="ability-card">
+                        <div class="idx">05</div>
+                        <h4>专注模式</h4>
+                        <p>番茄钟 + 静默陪伴，车内办公也能高效不被打扰。</p>
+                    </div>
+                    <div class="ability-card">
+                        <div class="idx">06</div>
+                        <h4>Lunaxy UGV 深度适配</h4>
+                        <p>原生融入弦月小车车机，与控制、音乐、地图、影像无缝共存。</p>
+                    </div>
+                    <div class="ability-card">
+                        <div class="idx">07</div>
+                        <h4>主流车机浏览器适配</h4>
+                        <p>通过内置浏览器即可打开，适配吉利、领克、零跑、理想、小鹏、蔚来、比亚迪等主流新能源车机。</p>
+                    </div>
+                    <div class="ability-card">
+                        <div class="idx">08</div>
+                        <h4>多端互通</h4>
+                        <p>手机版 / 车机版记忆同步，走到哪儿，Ruby 都认得你。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="compat">
+            <div class="container">
+                <div class="section-header">
+                    <span class="eyebrow">COMPATIBILITY · 适配车机</span>
+                    <h2 class="section-title">一只 Ruby，驶入更多座舱</h2>
+                    <p class="section-desc">除了深度适配弦月小车 Lunaxy UGV，虚境计划车机版同样支持内置浏览器的市面主流新能源车机——只要车机能打开网页，Ruby 就能住进来。</p>
+                </div>
+                <div class="compat-grid">
+                    <div class="compat-card featured">
+                        <span class="badge">深度适配</span>
+                        <h4>弦月小车 Lunaxy UGV</h4>
+                        <p>原生融入车机系统，与控制、音乐、地图、影像无缝共存，把「她」真正放进座舱的每一个角落。</p>
+                        <ul class="compat-list">
+                            <li>原生应用级接入，开机即在</li>
+                            <li>车辆状态感知（P 档 / 行驶时长 / 时段）</li>
+                            <li>座舱硬件联动：灯光、音量、屏幕亮度</li>
+                        </ul>
+                    </div>
+                    <div class="compat-card">
+                        <span class="badge">浏览器即用</span>
+                        <h4>内置浏览器的主流新能源车机</h4>
+                        <p>无需等待适配排期，通过车机内置浏览器访问即可开始陪伴，账号与记忆和手机版保持同步。</p>
+                        <div class="brand-chips">
+                            <span>吉利</span>
+                            <span>领克</span>
+                            <span>零跑</span>
+                            <span>理想</span>
+                            <span>小鹏</span>
+                            <span>蔚来</span>
+                            <span>比亚迪</span>
+                            <span class="more">等更多车型…</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="compat-note">* 具体功能（如助眠模式、主动感知、硬件联动）会因车机硬件与系统开放能力有所差异，以实际发布版本为准。</p>
+            </div>
+        </section>
+        <section class="section" id="roadmap" style="background:#fff;border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="eyebrow">NEWSROOM · 发布动态</span>
+                    <h2 class="section-title">下一站，与 Ruby 相见</h2>
+                </div>
+                <div class="timeline">
+                    <div class="tl-item">
+                        <div class="date">2026 · 已上线</div>
+                        <h4>虚境计划 Never Realm · 手机版</h4>
+                        <p>治愈系 AI 陪伴应用，提供聊天、哄睡、学习陪伴与长期记忆体验。</p>
+                    </div>
+                    <div class="tl-item">
+                        <div class="date">2026 Q4 · 联动官宣</div>
+                        <h4>塔心科技 × 枫云智能 · 车机版立项</h4>
+                        <p>双方确认联动，虚境计划车机版正式立项，深度适配弦月小车 Lunaxy UGV，并同步启动主流新能源车机浏览器兼容方案。</p>
+                    </div>
+                    <div class="tl-item">
+                        <div class="date">2026 · 12 月 · 敬请期待</div>
+                        <h4>虚境计划 · 车机版 正式发布</h4>
+                        <p>⸢虚境片刻，驰而有息⸥ —— 愿世间每个人，都能在旅途中被温柔相待。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section" id="co">
+            <div class="container">
+                <div class="section-header">
+                    <span class="eyebrow">CO-BUILD · 联合出品</span>
+                </div>
+                <div class="co-cards">
+                    <div class="co-card taxon">
+                        <div class="logo">
+                            <img src="image/txkj_logo.png" alt="塔心科技（大魔王）">
+                        </div>
+                        <h4>塔心科技（大魔王）</h4>
+                        <div class="en">TAXIN TECH · NEVER REALM</div>
+                        <p>「虚境计划 Never Realm」原创开发商，深耕治愈系 AI 陪伴，让每一次晚安都有人接住。</p>
+                        <span class="role">原作 & AI 陪伴引擎</span>
+                    </div>
+                    <div class="co-card mewco">
+                        <div class="logo">
+                            <img src="image/mewco_site_logo.png" alt="枫云智能（MewCo-AI）">
+                        </div>
+                        <h4>枫云智能（MewCo-AI）</h4>
+                        <div class="en">MEWCO-AI · OPEN SOURCE AI</div>
+                        <p>开源二次元 AI 助手团队，专注把 AI 乐趣融入美好生活，本次负责车机版适配（含主流新能源车机内置浏览器兼容）与生态共建。</p>
+                        <span class="role">车机版联合出品 & 适配</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <p class="f-copy">© 2026 塔心科技. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
