@@ -4,15 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="format-detection" content="telephone=no">
-<meta name="description" content="枫云AI助手社区版与 Linux 版项目对比：开源免费的二次元 AI 助手，支持主动感知对话、多模态视觉、Live2D / MMD / VRM 虚拟形象、本地 AI 引擎与多智能体能力。">
+<meta name="description" content="MewCo-AI 项目一览：硬件产品弦月小车 Lunaxy UGV 即将首曝；软件产品包括枫云AI助手社区版（Windows）与枫云AI助手Linux版，开源免费、持续迭代。">
 <meta name="theme-color" content="#f5f8ff" data-theme-color>
 <meta property="og:type" content="website">
 <meta property="og:title" content="项目一览 - MewCo-AI Studio">
-<meta property="og:description" content="枫云AI助手社区版与 Linux 版项目对比：开源免费的二次元 AI 助手，支持主动感知对话、多模态视觉、Live2D / MMD / VRM 虚拟形象、本地 AI 引擎与多智能体能力。">
+<meta property="og:description" content="硬件产品弦月小车 Lunaxy UGV 即将首曝；软件产品包括枫云AI助手社区版与 Linux 版，开源免费。">
 <meta property="og:url" content="https://mewco-ai.github.io/project/index.html">
 <meta property="og:site_name" content="MewCo-AI Studio">
+<meta property="og:image" content="https://mewco-ai.github.io/images/lunaxyugv/lunaxyugv_cover.jpg">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mewco-ai.github.io/images/lunaxyugv/lunaxyugv_cover.jpg">
 <title>项目一览 - MewCo-AI Studio</title>
 <link rel="canonical" href="https://mewco-ai.github.io/project/index.html">
 <link rel="icon" href="../images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
@@ -34,132 +36,63 @@
 </script>
 <link rel="stylesheet" href="../css/site.css">
 <script defer src="../js/site.js"></script>
-
 <style>
-/* ===== 项目对比表（原生样式实现，替换原 compare.jpg） ===== */
-.compare-table-wrap{
-  --ct-line: rgba(96,118,190,.18);
-  --ct-bg: #ffffff;
-  --ct-head-bg: linear-gradient(135deg, rgba(96,132,255,.16), rgba(64,200,230,.14));
-  --ct-col-bg: rgba(96,118,190,.07);
-  --ct-row-hover: rgba(96,132,255,.08);
-  --ct-text: #1e2433;
-  --ct-text-soft: #4b5568;
-  --ct-accent: #1f6fb2;
-  --ct-shadow: 0 12px 32px rgba(30,42,74,.10);
-  max-width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  background: var(--ct-bg);
-  border: 1px solid var(--ct-line);
-  border-radius: 16px;
-  box-shadow: var(--ct-shadow);
-}
-.compare-table-wrap:focus-visible{
-  outline: 2px solid var(--ct-accent);
-  outline-offset: 2px;
-}
-[data-theme="dark"] .compare-table-wrap{
-  --ct-line: rgba(255,255,255,.13);
-  --ct-bg: #141b2b;
-  --ct-head-bg: linear-gradient(135deg, rgba(96,132,255,.24), rgba(64,200,230,.16));
-  --ct-col-bg: rgba(255,255,255,.05);
-  --ct-row-hover: rgba(255,255,255,.07);
-  --ct-text: #e7ecf8;
-  --ct-text-soft: #b9c4da;
-  --ct-accent: #7fd3f0;
-  --ct-shadow: 0 12px 32px rgba(0,0,0,.38);
-}
-.compare-table{
-  width: 100%;
-  min-width: 460px;
-  border-collapse: collapse;
-  font-size: .9rem;
-  line-height: 1.6;
-  color: var(--ct-text);
-}
-.compare-table caption{
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-  border: 0;
-}
-.compare-table th,
-.compare-table td{
-  padding: .72rem .8rem;
-  text-align: center;
-  vertical-align: middle;
-  border-bottom: 1px solid var(--ct-line);
-  word-break: break-word;
-}
-.compare-table thead th{
-  background: var(--ct-head-bg);
-  font-size: .92rem;
-  font-weight: 700;
-  letter-spacing: .02em;
-}
-.compare-table thead th small{
-  font-size: .76rem;
-  font-weight: 500;
-  color: var(--ct-text-soft);
-}
-.compare-table tbody th{
-  width: 22%;
-  background: var(--ct-col-bg);
-  font-weight: 600;
-  color: var(--ct-text);
-}
-.compare-table tbody td{
-  color: var(--ct-text);
-}
-.compare-table td.is-merged{
-  color: var(--ct-accent);
-  font-weight: 600;
-}
-@media (hover: hover){
-  .compare-table tbody tr:hover > th,
-  .compare-table tbody tr:hover > td{
-    background-color: var(--ct-row-hover);
-  }
-}
-.compare-table tbody tr:last-child > th,
-.compare-table tbody tr:last-child > td{
-  border-bottom: 0;
-}
-@media (max-width: 560px){
-  .compare-table{
-    min-width: 420px;
-    font-size: .84rem;
-  }
-  .compare-table th,
-  .compare-table td{
-    padding: .6rem .55rem;
-  }
-}
+.compare-table-wrap{--ct-line:rgba(96,118,190,.18);--ct-bg:#ffffff;--ct-head-bg:linear-gradient(135deg,rgba(96,132,255,.16),rgba(64,200,230,.14));--ct-col-bg:rgba(96,118,190,.07);--ct-row-hover:rgba(96,132,255,.08);--ct-text:#1e2433;--ct-text-soft:#4b5568;--ct-accent:#1f6fb2;--ct-shadow:0 12px 32px rgba(30,42,74,.10);max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;background:var(--ct-bg);border:1px solid var(--ct-line);border-radius:16px;box-shadow:var(--ct-shadow)}
+.compare-table-wrap:focus-visible{outline:2px solid var(--ct-accent);outline-offset:2px}
+[data-theme="dark"] .compare-table-wrap{--ct-line:rgba(255,255,255,.13);--ct-bg:#141b2b;--ct-head-bg:linear-gradient(135deg,rgba(96,132,255,.24),rgba(64,200,230,.16));--ct-col-bg:rgba(255,255,255,.05);--ct-row-hover:rgba(255,255,255,.07);--ct-text:#e7ecf8;--ct-text-soft:#b9c4da;--ct-accent:#7fd3f0;--ct-shadow:0 12px 32px rgba(0,0,0,.38)}
+.compare-table{width:100%;min-width:460px;border-collapse:collapse;font-size:.9rem;line-height:1.6;color:var(--ct-text)}
+.compare-table caption{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.compare-table th,.compare-table td{padding:.72rem .8rem;text-align:center;vertical-align:middle;border-bottom:1px solid var(--ct-line);word-break:break-word}
+.compare-table thead th{background:var(--ct-head-bg);font-size:.92rem;font-weight:700;letter-spacing:.02em}
+.compare-table thead th small{font-size:.76rem;font-weight:500;color:var(--ct-text-soft)}
+.compare-table tbody th{width:22%;background:var(--ct-col-bg);font-weight:600;color:var(--ct-text)}
+.compare-table tbody td{color:var(--ct-text)}
+.compare-table td.is-merged{color:var(--ct-accent);font-weight:600}
+@media (hover: hover){.compare-table tbody tr:hover > th,.compare-table tbody tr:hover > td{background-color:var(--ct-row-hover)}}
+.compare-table tbody tr:last-child > th,.compare-table tbody tr:last-child > td{border-bottom:0}
+@media (max-width: 560px){.compare-table{min-width:420px;font-size:.84rem}.compare-table th,.compare-table td{padding:.6rem .55rem}}
+.hardware-panel{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(26px,4vw,52px);align-items:center;padding:clamp(24px,3.6vw,40px);border:1px solid var(--border);border-radius:var(--radius-lg);background:radial-gradient(520px 260px at 4% -20%, var(--brand-soft), transparent 72%),var(--surface);box-shadow:var(--shadow-sm)}
+.hardware-media{position:relative;padding:9px;border:1px solid var(--border);border-radius:18px;background:var(--surface-soft);overflow:hidden}
+.hardware-media img{display:block;width:100%;height:auto;border-radius:11px;background:linear-gradient(135deg,rgba(27,92,255,.1),rgba(0,167,196,.06) 55%,transparent 88%),var(--surface-soft)}
+.hardware-copy h3{margin-top:14px;font-size:clamp(25px,3vw,34px);font-weight:780;line-height:1.2;letter-spacing:-.03em;color:var(--text)}
+.hardware-sub{display:block;margin-top:4px;font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--muted)}
+.hardware-desc{margin-top:14px;font-size:14px;line-height:1.9;color:var(--muted)}
+.hardware-facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.hardware-fact{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border:1px solid var(--border);border-radius:999px;background:var(--surface);font-size:12px;font-weight:600;color:var(--text-soft)}
+.hardware-fact i{width:6px;height:6px;border-radius:50%;background:var(--brand);flex:none}
+.hardware-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+@media (max-width:980px){.hardware-panel{grid-template-columns:1fr}}
 </style>
 </head>
 <body class="">
 <a class="skip-link" href="#main">跳到主要内容</a>
-
 <header class="site-header" data-header>
   <div class="container nav-wrap">
     <a class="brand" href="../index.html" aria-label="MewCo-AI 首页">
-  <img class="brand-logo" src="../images/icons/mewcologo.png" alt="MewCo-AI" style="height: 36px; width: auto;">
-</a>
+      <img class="brand-logo" src="../images/icons/mewcologo.png" alt="MewCo-AI" style="height: 36px; width: auto;">
+    </a>
     <nav class="site-nav" id="site-nav" data-nav aria-label="主导航">
-      <a class="nav-link" href="../index.html">首页</a><a class="nav-link is-active" href="../project/index.html" aria-current="page">项目一览</a><a class="nav-link" href="../tutorial/use_tutorial/index.html">使用教程</a><a class="nav-link" href="../tutorial/dev_tutorial/index.html">开发教程</a><a class="nav-link" href="../about/index.html">关于我们</a>
+      <a class="nav-link" href="../index.html">首页</a>
+      <a class="nav-link is-active" href="../project/index.html" aria-current="page">项目一览</a>
+      <a class="nav-link" href="../tutorial/use_tutorial/index.html">使用教程</a>
+      <a class="nav-link" href="../tutorial/dev_tutorial/index.html">开发教程</a>
+      <a class="nav-link" href="../about/index.html">关于我们</a>
       <div class="nav-extra">
-        <a class="btn btn-ghost btn-sm" href="https://github.com/MewCo-AI/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg> GitHub</a>
-        <a class="btn btn-soft btn-sm" href="https://space.bilibili.com/106439263/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="m7 2 3 4M17 2l-3 4M8 12h2M14 12h2"/></svg> 官方 B 站</a>
+        <a class="btn btn-ghost btn-sm" href="https://github.com/MewCo-AI/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg>
+          GitHub
+        </a>
+        <a class="btn btn-soft btn-sm" href="https://space.bilibili.com/106439263/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="m7 2 3 4M17 2l-3 4M8 12h2M14 12h2"/></svg>
+          官方 B 站
+        </a>
       </div>
     </nav>
     <div class="nav-actions">
-      <a class="nav-gh" href="https://github.com/MewCo-AI/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg><span>GitHub</span></a>
+      <a class="nav-gh" href="https://github.com/MewCo-AI/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg>
+        <span>GitHub</span>
+      </a>
       <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换深色或浅色模式" aria-pressed="false">
         <span class="theme-opt theme-sun" aria-hidden="true">☀️</span>
         <span class="theme-opt theme-moon" aria-hidden="true">🌙</span>
@@ -172,226 +105,322 @@
   </div>
 </header>
 <main id="main">
-<section class="page-hero">
-  <div class="container page-hero-inner">
-    <div class="breadcrumb"><a href="../index.html">首页</a><span class="sep">/</span><span class="current">项目一览</span></div>
-
-    <h1 class="">两款开源助手，<br><span class="grad">为每一种热爱而生</span></h1>
-    <p class="page-hero-lead">枫云，是 MewCo-AI 精心打造的大型 AI 公益项目，旨在普及新型 AI 技术并提供便捷的使用方式，让每个人都能享受到 AI 带来的乐趣与便利。无论你是刚踏入 AI 世界的萌新、正在学习阶段的开发者，还是经验丰富的极客，都能在下面找到适合自己的版本。</p>
-
-    <div class="article-actions">
-  <a class="btn btn-primary" href="https://github.com/MewCo-AI/" target="_blank" rel="noopener"><span>GitHub 开源社区</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg></a>
-  <a class="btn btn-ghost" href="../tutorial/use_tutorial/index.html"><span>查看使用教程</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4.5h6a3 3 0 0 1 3 3V21a3 3 0 0 0-3-3H4V4.5Z"/><path d="M20 4.5h-4a3 3 0 0 0-3 3V21a3 3 0 0 1 3-3h4V4.5Z"/></svg></a>
-</div>
-  </div>
-</section><section class="section">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="section-head-main">
-        <h2 class="section-title">同一个枫云，<span class="grad">两种打开方式</span></h2>
-        <p class="section-desc">社区版面向 Windows 桌面与全平台浏览器访问，Linux 版面向极客硬件与局域网场景。核心能力一脉相承，选择取决于你的设备与使用习惯。</p>
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <div class="breadcrumb">
+        <a href="../index.html">首页</a>
+        <span class="sep">/</span>
+        <span class="current">项目一览</span>
+      </div>
+      <h1>从桌面助手，<br><span class="grad">到迷你座舱</span></h1>
+      <p class="page-hero-lead">
+        MewCo-AI 正在把开源 AI 能力从屏幕里带向真实世界。硬件产品弦月小车 Lunaxy UGV 即将首曝；软件产品枫云 AI 助手社区版与 Linux 版持续迭代。无论你关注实体座舱，还是桌面上的 AI 助手，都能在这里找到入口。
+      </p>
+      <div class="article-actions">
+        <a class="btn btn-primary" href="lunaxyugv/index.html">
+          <span>抢先看弦月小车</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#software">
+          <span>查看软件产品</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 20h16"/></svg>
+        </a>
       </div>
     </div>
-    <div class="about-split">
-      <div class="about-media reveal">
-        <div class="compare-table-wrap" role="region" aria-label="社区版与 Linux 版功能对比表" tabindex="0">
-          <table class="compare-table">
-            <caption>枫云AI助手社区版与 Linux 版功能对比表</caption>
-            <thead>
-              <tr>
-                <th scope="col">功能特性</th>
-                <th scope="col">社区版 v4.2 <small>（开源）</small></th>
-                <th scope="col">Linux 版 v4.3 <small>（开源）</small></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">项目定位</th>
-                <td>高自由度全能型网页 / 桌面二次元 AI 助手</td>
-                <td>专为 Linux 极客打造的二次元 AI 助手</td>
-              </tr>
-              <tr>
-                <th scope="row">适用人群</th>
-                <td>To C（大众用户）</td>
-                <td>To D（开发者）</td>
-              </tr>
-              <tr>
-                <th scope="row">入门难度</th>
-                <td>中低，有一键整合包</td>
-                <td>高，需要熟悉 Linux 系统和 Python 编程</td>
-              </tr>
-              <tr>
-                <th scope="row">支持平台</th>
-                <td>Windows 10/11 x86_64</td>
-                <td>Linux ARM64 / Linux x86_64</td>
-              </tr>
-              <tr>
-                <th scope="row">软件架构</th>
-                <td>Web 服务 + Qt 桌面宠物 + 悬浮球</td>
-                <td>纯 Web 服务端，无桌面 GUI</td>
-              </tr>
-              <tr>
-                <th scope="row">超级智能体接口</th>
-                <td>OpenClaw / QwenPaw(MQTT)</td>
-                <td>OpenClaw / QwenPaw / Hermes Agent</td>
-              </tr>
-              <tr>
-                <th scope="row">适用场景</th>
-                <td>本地服务器 / 开发板</td>
-                <td>个人桌面 PC / 笔记本</td>
-              </tr>
-              <tr>
-                <th scope="row">专注 / 放松模式</th>
-                <td>暂不支持，后续新版将支持</td>
-                <td>支持，空间音效沉浸全景声</td>
-              </tr>
-              <tr>
-                <th scope="row">DIY 二次开发</th>
-                <td class="is-merged" colspan="2">支持，自由修改源代码</td>
-              </tr>
-              <tr>
-                <th scope="row">本地部署</th>
-                <td class="is-merged" colspan="2">全系支持完全本地 / 局域网私有化部署，隐私不外露</td>
-              </tr>
-              <tr>
-                <th scope="row">费用及范围</th>
-                <td class="is-merged" colspan="2">项目组秉持科技平权的理念，推动 AI 技术普惠，全系产品开源免费无内购。不可商用，仅供个人使用</td>
-              </tr>
-            </tbody>
-          </table>
+  </section>
+  <section class="section" id="hardware">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-head-main">
+          <span class="eyebrow"><span class="slash">/</span>Hardware</span>
+          <h2 class="section-title">硬件产品</h2>
+          <p class="section-desc">首款硬件生态产品，把完整的 AI 座舱系统装进迷你形态，带到桌面、家中与车内。</p>
         </div>
       </div>
-      <div class="about-copy reveal" style="--d: 100ms">
-        <h2>从一张对比表，<br>找到你的 AI 助手</h2>
-        <p><strong>枫云AI助手社区版</strong>是一款高自由度网页 / 桌面二次元 2D / 3D 全能 AI 助手。在 Windows 电脑上运行后，局域网内的电脑、手机、平板甚至车机都能通过浏览器使用，并支持 Live2D 桌宠、通用电脑自主操控与多智能体协作。</p>
-        <p><strong>枫云AI助手Linux版</strong>专为 Linux 极客打造，适配 ARM / X86 开发板与服务器。声纹识别、三大超级智能体、IM 机器人与主机状态监控一应俱全，让 AI 助手真正装进随身硬件。</p>
-        <p>两个版本均<strong>开源免费、无内购</strong>，支持云 / 边 / 端三模 AI 引擎。你可以直接下载整合包体验，也可以从 GitHub 获取源码，自由二次开发，创造只属于你的助手。</p>
-        <a class="btn btn-soft" href="https://github.com/MewCo-AI/" target="_blank" rel="noopener"><span>逛逛 GitHub 开源社区</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg></a>
+      <div class="hardware-panel reveal">
+        <div class="hardware-media">
+          <img src="../images/lunaxyugv/lunaxyugv_cover.jpg"
+               alt="弦月小车 Lunaxy UGV 首曝封面概念图"
+               width="1280" height="720"
+               loading="lazy">
+        </div>
+        <div class="hardware-copy">
+          <span class="pill pill-brand">首曝预热 · 11 月下旬</span>
+          <h3>弦月小车 Lunaxy UGV
+            <span class="hardware-sub">开源全域多场景迷你 AI 座舱平台</span>
+          </h3>
+          <p class="hardware-desc">
+            一台小车，一套完整的座舱系统。可以被拆开、被理解、被重新定义。代码、文档与配置一起交付，有浏览器的地方就是它的屏幕。桌面、家中、车内，同一套系统换一个场景继续用。
+          </p>
+          <div class="hardware-facts">
+            <span class="hardware-fact"><i></i>完全开源</span>
+            <span class="hardware-fact"><i></i>全域多场景</span>
+            <span class="hardware-fact"><i></i>迷你座舱形态</span>
+            <span class="hardware-fact"><i></i>12 月中旬正式发布</span>
+          </div>
+          <div class="hardware-actions">
+            <a class="btn btn-primary" href="lunaxyugv/index.html">
+              <span>抢先看</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="btn btn-soft" href="https://github.com/MewCo-AI/" target="_blank" rel="noopener">
+              <span>关注 GitHub 动态</span>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="software">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-head-main">
+          <span class="eyebrow"><span class="slash">/</span>Software</span>
+          <h2 class="section-title">软件产品</h2>
+          <p class="section-desc">两款开源免费的二次元 AI 助手，分别面向 Windows 桌面与 Linux 极客硬件。核心能力一脉相承，选择取决于你的设备与使用习惯。</p>
+        </div>
+        <div class="section-link">
+          <a class="text-link" href="../tutorial/use_tutorial/index.html">
+            查看使用教程
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="projects-grid">
+        <article class="project-card reveal">
+          <div class="project-head">
+            <div class="project-id">
+              <span class="project-avatar">
+                <img src="../images/maiac/asstcomm_logo.png" alt="社区版角色标志" width="56" height="56" loading="lazy">
+              </span>
+              <div>
+                <h3 class="project-name">枫云AI助手社区版</h3>
+              </div>
+            </div>
+            <span class="pill pill-brand">v4.2 · Windows</span>
+          </div>
+          <div class="project-media">
+            <img src="../images/maiac/asstcomm_summary.jpg" alt="枫云AI助手社区版功能总览" width="1840" height="709" loading="lazy">
+          </div>
+          <p class="project-desc">
+            高自由度网页 / 桌面二次元 2D/3D 全能 AI 助手。多设备全平台通过浏览器使用，集成主动感知对话、多模态图像识别、Live2D 桌宠与通用电脑自主操控。
+          </p>
+          <div class="project-tags">
+            <span class="pill">Windows 10/11</span>
+            <span class="pill">主动感知对话</span>
+            <span class="pill">Live2D 桌宠</span>
+            <span class="pill">电脑自主操控</span>
+          </div>
+          <div class="project-foot" style="justify-content:flex-end">
+            <a class="text-link" href="asstcomm/index.html">
+              查看详情
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </article>
+        <article class="project-card reveal" style="--d: 100ms">
+          <div class="project-head">
+            <div class="project-id">
+              <span class="project-avatar">
+                <img src="../images/maial/asstlinux_logo.png" alt="Linux版角色标志" width="56" height="56" loading="lazy">
+              </span>
+              <div>
+                <h3 class="project-name">枫云AI助手Linux版</h3>
+              </div>
+            </div>
+            <span class="pill pill-brand">v4.3 · Linux</span>
+          </div>
+          <div class="project-media">
+            <img src="../images/maial/asstlinux_summary.jpg" alt="枫云AI助手Linux版功能总览" width="1760" height="632" loading="lazy">
+          </div>
+          <p class="project-desc">
+            专为 Linux 极客打造的二次元 2D/3D AI 助手。适配 ARM / X86 开发板与服务器，支持局域网内任意设备通过浏览器访问，让 AI 助手装进随身硬件。
+          </p>
+          <div class="project-tags">
+            <span class="pill">Linux ARM64 / x86_64</span>
+            <span class="pill">声纹识别</span>
+            <span class="pill">三大超级智能体</span>
+            <span class="pill">VRM 角色</span>
+          </div>
+          <div class="project-foot" style="justify-content:flex-end">
+            <a class="text-link" href="asstlinux/index.html">
+              查看详情
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="compare">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-head-main">
+          <span class="eyebrow"><span class="slash">/</span>Compare</span>
+          <h2 class="section-title">软件产品对比，<span class="grad">找到适合你的那一款</span></h2>
+          <p class="section-desc">社区版面向 Windows 桌面与全平台浏览器访问，Linux 版面向极客硬件与局域网场景。核心能力一脉相承，选择取决于你的设备与使用习惯。</p>
+        </div>
+      </div>
+      <div class="compare-table-wrap reveal" role="region" aria-label="社区版与 Linux 版功能对比表" tabindex="0">
+        <table class="compare-table">
+          <caption>枫云AI助手社区版与 Linux 版功能对比表</caption>
+          <thead>
+            <tr>
+              <th scope="col">功能特性</th>
+              <th scope="col">社区版 v4.2 <small>（Windows）</small></th>
+              <th scope="col">Linux 版 v4.3 <small>（Linux）</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">项目定位</th>
+              <td>高自由度全能型网页 / 桌面二次元 AI 助手</td>
+              <td>专为 Linux 极客打造的二次元 AI 助手</td>
+            </tr>
+            <tr>
+              <th scope="row">适用人群</th>
+              <td>To C（大众用户）</td>
+              <td>To D（开发者）</td>
+            </tr>
+            <tr>
+              <th scope="row">入门难度</th>
+              <td>中低，有一键整合包</td>
+              <td>高，需要熟悉 Linux 系统和 Python 编程</td>
+            </tr>
+            <tr>
+              <th scope="row">支持平台</th>
+              <td>Windows 10/11 x86_64</td>
+              <td>Linux ARM64 / Linux x86_64</td>
+            </tr>
+            <tr>
+              <th scope="row">软件架构</th>
+              <td>Web 服务 + Qt 桌面宠物 + 悬浮球</td>
+              <td>纯 Web 服务端，无桌面 GUI</td>
+            </tr>
+            <tr>
+              <th scope="row">超级智能体接口</th>
+              <td>OpenClaw / QwenPaw(MQTT)</td>
+              <td>OpenClaw / QwenPaw / Hermes Agent</td>
+            </tr>
+            <tr>
+              <th scope="row">适用场景</th>
+              <td>个人桌面 PC / 笔记本</td>
+              <td>本地服务器 / 开发板</td>
+            </tr>
+            <tr>
+              <th scope="row">专注 / 放松模式</th>
+              <td>暂不支持，后续新版将支持</td>
+              <td>支持，空间音效沉浸全景声</td>
+            </tr>
+            <tr>
+              <th scope="row">DIY 二次开发</th>
+              <td class="is-merged" colspan="2">支持，自由修改源代码</td>
+            </tr>
+            <tr>
+              <th scope="row">本地部署</th>
+              <td class="is-merged" colspan="2">全系支持完全本地 / 局域网私有化部署，隐私不外露</td>
+            </tr>
+            <tr>
+              <th scope="row">费用及范围</th>
+              <td class="is-merged" colspan="2">项目组秉持科技平权的理念，推动 AI 技术普惠，全系产品开源免费无内购。不可商用，仅供个人使用</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-head-main">
+          <h2 class="section-title">文档、教程与引擎，<span class="grad">一站直达</span></h2>
+          <p class="section-desc">从第一次启动到深入源码，从本地推理到智能家居接入，配套资源会随着版本持续更新。</p>
+        </div>
+      </div>
+      <div class="resource-entry-grid">
+        <a class="resource-entry reveal" href="../tutorial/use_tutorial/index.html">
+          <span class="resource-entry-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4.5h6a3 3 0 0 1 3 3V21a3 3 0 0 0-3-3H4V4.5Z"/><path d="M20 4.5h-4a3 3 0 0 0-3 3V21a3 3 0 0 1 3-3h4V4.5Z"/></svg>
+          </span>
+          <h3>使用教程</h3>
+          <p>12 期视频，从超级智能体、自主操控到声纹、角色与远程访问。</p>
+          <span class="text-link">前往查看<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="resource-entry reveal" href="../tutorial/dev_tutorial/index.html">
+          <span class="resource-entry-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m8 6-6 6 6 6M16 6l6 6-6 6M13.5 4l-3 16"/></svg>
+          </span>
+          <h3>开发教程</h3>
+          <p>14 期源码解析，覆盖 ASR、LLM、TTS、VLM、智能体与虚拟形象。</p>
+          <span class="text-link">前往查看<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="resource-entry reveal" href="../tutorial/engine/index.html">
+          <span class="resource-entry-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg>
+          </span>
+          <h3>本地 AI 引擎</h3>
+          <p>免费开源插件合集，让本地 AI 拥有更低延迟、成本与依赖。</p>
+          <span class="text-link">前往查看<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="resource-entry reveal" href="../index.html#news">
+          <span class="resource-entry-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-3.8-.9L3 21l1.9-5.4A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8 11h8M8 14h5"/></svg>
+          </span>
+          <h3>项目动态</h3>
+          <p>版本更新、教程发布与首曝公告，记录 MewCo-AI 一路走来的足迹。</p>
+          <span class="text-link">前往查看<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+  <div class="cta-wrap">
+    <div class="container">
+      <div class="cta-panel reveal">
+        <div class="cta-copy">
+          <h2>和 MewCo-AI 一起，<br>把开源的热爱变成好用的产品</h2>
+          <p>从弦月小车到枫云 AI 助手，所有项目开源免费。欢迎 Star、试用、反馈，或加入社区，一起把热爱变成真正好用的产品。</p>
+          <div class="cta-links">
+            <a href="https://ifdian.net/a/maplemiro" target="_blank" rel="noopener">支持我们</a>
+            <a href="mailto:mewcoai@foxmail.com">技术支持邮箱</a>
+            <a href="../about/index.html">关于工作室</a>
+          </div>
+        </div>
+        <div class="cta-actions">
+          <a class="btn btn-light" href="https://github.com/MewCo-AI/" target="_blank" rel="noopener">
+            <span>GitHub 开源社区</span>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg>
+          </a>
+          <a class="btn btn-glass" href="https://space.bilibili.com/106439263/" target="_blank" rel="noopener">
+            <span>关注官方 B 站</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="m7 2 3 4M17 2l-3 4M8 12h2M14 12h2"/></svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>
-</section><section class="section">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="section-head-main">
-        <h2 class="section-title">选择适合你的<span class="grad">那一款</span></h2>
-      </div>
-    </div>
-    <div class="project-feature-panel reveal">
-  <div class="project-feature-media">
-    <img src="../images/maiac/asstcomm_summary.jpg" alt="枫云AI助手社区版功能总览" width="1840" height="709" loading="lazy">
-  </div>
-  <div>
-    <div class="project-feature-head">
-      <img src="../images/maiac/asstcomm_logo.png" alt="社区版角色标志" width="48" height="48" loading="lazy">
-      <div>
-        <h3>枫云AI助手社区版</h3>
-      </div>
-    </div>
-    <p class="project-desc">高自由度网页 / 桌面二次元 2D / 3D 全能 AI 助手。多设备全平台通过浏览器便捷使用，结合主动感知对话引擎、多模态图像识别、全域声音感知、多智能体助手、Live2D 桌宠、自定义 Live2D / MMD / VRM 角色、通用电脑自主操控，以及云 / 边 / 端三模 AI 引擎技术。</p>
-    <div class="project-tags">
-      <span class="pill">主动感知对话</span>
-      <span class="pill">多模态视觉</span>
-      <span class="pill">电脑自主操控</span>
-      <span class="pill">IM 机器人</span>
-    </div>
-    <div class="project-feature-actions">
-      <a class="btn btn-primary" href="../project/asstcomm/index.html"><span>了解社区版</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a class="btn btn-ghost" href="https://github.com/MewCo-AI/mewco_ai_assistant_comm" target="_blank" rel="noopener"><span>GitHub 仓库</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg></a>
-    </div>
-  </div>
-</div>
-    <div class="project-feature-panel reverse reveal">
-  <div class="project-feature-media">
-    <img src="../images/maial/asstlinux_summary.jpg" alt="枫云AI助手Linux版功能总览" width="1760" height="632" loading="lazy">
-  </div>
-  <div>
-    <div class="project-feature-head">
-      <img src="../images/maial/asstlinux_logo.png" alt="Linux版角色标志" width="48" height="48" loading="lazy">
-      <div>
-        <h3>枫云AI助手Linux版</h3>
-      </div>
-    </div>
-    <p class="project-desc">专为 Linux 极客打造的二次元 2D / 3D AI 助手。集成声纹识别语音交互、多模态图像识别、Live2D / MMD / VRM 虚拟角色、主动感知对话、IM 机器人接入，以及 OpenClaw / QwenPaw / Hermes Agent 三大超级智能体，支持通过浏览器从局域网内任意设备访问。</p>
-    <div class="project-tags">
-      <span class="pill">声纹识别</span>
-      <span class="pill">三大超级智能体</span>
-      <span class="pill">主机状态监控</span>
-      <span class="pill">专注 / 放松模式</span>
-    </div>
-    <div class="project-feature-actions">
-      <a class="btn btn-primary" href="../project/asstlinux/index.html"><span>了解 Linux 版</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a class="btn btn-ghost" href="https://github.com/MewCo-AI/mewco_ai_assistant_linux" target="_blank" rel="noopener"><span>GitHub 仓库</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg></a>
-    </div>
-  </div>
-</div>
-  </div>
-</section><section class="section">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="section-head-main">
-        <h2 class="section-title">文档、教程与引擎，<span class="grad">一站直达</span></h2>
-        <p class="section-desc">从第一次启动到深入源码，从本地推理到智能家居接入，配套资源会随着版本持续更新。</p>
-      </div>
-    </div>
-    <div class="resource-entry-grid"><a class="resource-entry reveal" href="../tutorial/use_tutorial/index.html">
-  <span class="resource-entry-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4.5h6a3 3 0 0 1 3 3V21a3 3 0 0 0-3-3H4V4.5Z"/><path d="M20 4.5h-4a3 3 0 0 0-3 3V21a3 3 0 0 1 3-3h4V4.5Z"/></svg></span>
-  <h3>使用教程</h3>
-  <p>12 期视频，从超级智能体、自主操控到声纹、角色与远程访问。</p>
-  <span class="text-link">前往查看<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-</a><a class="resource-entry reveal" href="../tutorial/dev_tutorial/index.html">
-  <span class="resource-entry-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m8 6-6 6 6 6M16 6l6 6-6 6M13.5 4l-3 16"/></svg></span>
-  <h3>开发教程</h3>
-  <p>14 期源码解析，覆盖 ASR、LLM、TTS、VLM、智能体与虚拟形象。</p>
-  <span class="text-link">前往查看<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-</a><a class="resource-entry reveal" href="../tutorial/engine/index.html">
-  <span class="resource-entry-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg></span>
-  <h3>本地 AI 引擎</h3>
-  <p>免费开源插件合集，让本地 AI 拥有更低延迟、成本与依赖。</p>
-  <span class="text-link">前往查看<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-</a><a class="resource-entry reveal" href="../index.html#news">
-  <span class="resource-entry-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-3.8-.9L3 21l1.9-5.4A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8 11h8M8 14h5"/></svg></span>
-  <h3>项目动态</h3>
-  <p>版本更新、教程发布与转型公告，记录枫云一路走来的足迹。</p>
-  <span class="text-link">前往查看<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-</a></div>
-  </div>
-</section><div class="cta-wrap">
-  <div class="container">
-    <div class="cta-panel reveal">
-      <div class="cta-copy">
-        <h2>和 MewCo-AI 一起，让 AI 助手走进更多人的生活</h2>
-        <p>所有项目开源免费。欢迎 Star、试用、反馈，或加入社区，一起把热爱变成真正可用的产品。</p>
-        <div class="cta-links"><a href="https://ifdian.net/a/maplemiro" target="_blank" rel="noopener">支持我们</a><a href="mailto:mewcoai@foxmail.com">技术支持邮箱</a><a href="../about/index.html">关于工作室</a></div>
-      </div>
-      <div class="cta-actions">
-        <a class="btn btn-light" href="https://github.com/MewCo-AI/" target="_blank" rel="noopener"><span>GitHub 开源社区</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg></a>
-        <a class="btn btn-glass" href="https://space.bilibili.com/106439263/" target="_blank" rel="noopener"><span>关注官方 B 站</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="m7 2 3 4M17 2l-3 4M8 12h2M14 12h2"/></svg></a>
-      </div>
-    </div>
-  </div>
-</div>
 </main>
 <footer class="site-footer">
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
         <a class="brand" href="../index.html" aria-label="MewCo-AI 首页">
-  <img class="brand-logo" src="../images/icons/mewcologo.png" alt="MewCo-AI" style="height: 36px; width: auto;">
-</a>
-        <p>MewCo-AI（枫云智能）是一支热爱科技与二次元文化的年轻团队，专注开源 AI 助手的公益探索，让每个人都能拥有属于自己的全能型 AI 助手。</p>
+          <img class="brand-logo" src="../images/icons/mewcologo.png" alt="MewCo-AI" style="height: 36px; width: auto;">
+        </a>
+        <p>MewCo-AI（枫云智能）是一支热爱科技与二次元文化的年轻团队，专注开源 AI 助手的公益探索，并推出首款硬件生态产品弦月小车 Lunaxy UGV，让每个人都能拥有属于自己的全能型 AI 助手。</p>
       </div>
       <div class="footer-col">
         <h4>产品</h4>
-        <a href="../project/asstcomm/index.html">枫云AI助手社区版</a>
-        <a href="../project/asstlinux/index.html">枫云AI助手Linux版</a>
+        <a href="lunaxyugv/index.html">弦月小车 Lunaxy UGV</a>
+        <a href="asstcomm/index.html">枫云AI助手社区版</a>
+        <a href="asstlinux/index.html">枫云AI助手Linux版</a>
       </div>
       <div class="footer-col">
         <h4>资源</h4>
         <a href="../tutorial/engine/index.html">本地AI引擎插件</a>
         <a href="../tutorial/use_tutorial/index.html">使用教程</a>
         <a href="../tutorial/dev_tutorial/index.html">开发教程</a>
-        <a href="../project/index.html">项目一览</a>
+        <a href="index.html">项目一览</a>
       </div>
       <div class="footer-col">
         <h4>关于</h4>
@@ -407,6 +436,8 @@
     </div>
   </div>
 </footer>
-<button class="backtop" type="button" data-backtop aria-label="回到页面顶部"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+<button class="backtop" type="button" data-backtop aria-label="回到页面顶部">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
 </body>
 </html>
