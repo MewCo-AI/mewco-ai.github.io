@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone=no">
+<meta name="description" content="弦月小车 Lunaxy UGV 首曝预热：开源全域多场景迷你 AI 座舱平台。11 月下旬首曝，12 月中旬正式发布。">
+<meta name="theme-color" content="#f5f8ff" data-theme-color>
+<meta property="og:type" content="website">
+<meta property="og:title" content="弦月小车 Lunaxy UGV · 首曝预热 - MewCo-AI Studio">
+<meta property="og:description" content="开源全域多场景迷你 AI 座舱平台。11 月下旬首曝，12 月中旬正式发布。">
+<meta property="og:url" content="https://mewco-ai.github.io/project/lunaxyugv/index.html">
+<meta property="og:site_name" content="MewCo-AI Studio">
+<meta property="og:image" content="https://mewco-ai.github.io/images/lunaxyugv/lunaxyugv_cover.jpg">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mewco-ai.github.io/images/lunaxyugv/lunaxyugv_cover.jpg">
+<title>弦月小车 Lunaxy UGV · 首曝预热 | MewCo-AI Studio</title>
+<link rel="canonical" href="https://mewco-ai.github.io/project/lunaxyugv/index.html">
+<link rel="icon" href="../../images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="icon" href="../../images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var saved = localStorage.getItem("mewco-theme");
+    if (saved !== "dark" && saved !== "light") {
+      saved = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    root.setAttribute("data-theme", saved);
+  } catch (e) {
+    root.setAttribute("data-theme", "light");
+  }
+  root.classList.add("js");
+})();
+</script>
+<link rel="stylesheet" href="../../css/site.css">
+<script defer src="../../js/site.js"></script>
+<style>
+.teaser-hero{position:relative;overflow:hidden;padding:clamp(48px,6.4vw,84px) 0 clamp(26px,3.6vw,44px)}
+.teaser-hero::before{content:"";position:absolute;top:-320px;right:-140px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(45,125,255,.16),rgba(0,167,196,.05) 45%,transparent 68%);pointer-events:none}
+html[data-theme="dark"] .teaser-hero::before{background:radial-gradient(circle,rgba(62,128,255,.2),rgba(0,205,225,.05) 46%,transparent 70%)}
+.teaser-copy{position:relative;z-index:1;max-width:920px}
+.teaser-title{margin-top:22px;font-size:clamp(40px,6.2vw,76px);font-weight:800;line-height:1.04;letter-spacing:-.05em;color:var(--text)}
+.teaser-slogan{margin-top:22px;font-size:clamp(21px,2.9vw,34px);font-weight:780;line-height:1.38;letter-spacing:-.025em;background:var(--gradient-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.teaser-lead{margin-top:20px;max-width:620px;font-size:clamp(14.5px,1.5vw,16.5px);line-height:1.9;color:var(--muted)}
+.teaser-lead strong{color:var(--text-soft);font-weight:650}
+.cover-figure{position:relative;z-index:1;margin:clamp(32px,4.6vw,56px) 0 0}
+.cover-frame{position:relative;padding:10px;border:1px solid var(--border);border-radius:var(--radius-xl);background:var(--surface);box-shadow:var(--shadow-lg),var(--shadow-glow);overflow:hidden}
+.cover-frame img{display:block;width:100%;aspect-ratio:16/8.4;object-fit:cover;border-radius:22px;background:linear-gradient(135deg,rgba(27,92,255,.1),rgba(0,167,196,.06) 55%,transparent 88%),var(--surface-soft)}
+.fact-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--surface);box-shadow:var(--shadow-sm);overflow:hidden}
+.fact{position:relative;padding:24px 26px 22px;border-right:1px solid var(--border)}
+.fact:last-child{border-right:0}
+.fact-k{font-family:var(--font-mono);font-size:9.5px;font-weight:600;letter-spacing:.16em;color:var(--faint);text-transform:uppercase}
+.fact-v{margin-top:10px;font-size:clamp(17px,1.9vw,21px);font-weight:780;line-height:1.3;letter-spacing:-.025em;color:var(--text)}
+.fact-v .grad{background:var(--gradient-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.fact-d{margin-top:5px;font-size:12px;line-height:1.6;color:var(--muted)}
+.hint-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.hint-card{position:relative;display:flex;flex-direction:column;padding:26px 24px;border:1px solid var(--border);border-radius:20px;background:var(--surface);box-shadow:var(--shadow-sm);overflow:hidden;transition:transform .35s var(--ease),border-color .3s ease,box-shadow .35s var(--ease)}
+.hint-card::after{content:"";position:absolute;right:-50px;bottom:-60px;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle,var(--brand-softer),transparent 68%);pointer-events:none}
+.hint-card:hover{transform:translateY(-4px);border-color:rgba(27,92,255,.28);box-shadow:var(--shadow-md)}
+.hint-no{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--brand)}
+.hint-card h3{position:relative;z-index:1;margin-top:20px;font-size:17px;font-weight:730;line-height:1.4;letter-spacing:-.02em;color:var(--text)}
+.hint-card p{position:relative;z-index:1;margin-top:9px;font-size:13px;line-height:1.78;color:var(--muted)}
+.statement-block{max-width:760px}
+.statement-line{display:block;font-size:clamp(22px,2.8vw,30px);font-weight:760;line-height:1.45;letter-spacing:-.03em;color:var(--text)}
+.statement-line + .statement-line{margin-top:6px}
+.statement-line .grad{background:var(--gradient-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.statement-note{margin-top:20px;font-size:14px;line-height:1.85;color:var(--muted)}
+.eco-panel{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(26px,4vw,52px);align-items:center;padding:clamp(24px,3.6vw,40px);border:1px solid var(--border);border-radius:var(--radius-lg);background:radial-gradient(520px 260px at 4% -20%,var(--brand-soft),transparent 72%),var(--surface);box-shadow:var(--shadow-sm)}
+.eco-media{position:relative;padding:8px;border:1px solid var(--border);border-radius:18px;background:var(--surface-soft);overflow:hidden}
+.eco-media img{display:block;width:100%;height:auto;border-radius:11px;background:linear-gradient(135deg,rgba(27,92,255,.1),rgba(0,167,196,.06) 55%,transparent 88%),var(--surface-soft)}
+.eco-copy{min-width:0}
+.eco-copy h3{margin-top:14px;font-size:clamp(23px,2.7vw,30px);font-weight:780;line-height:1.25;letter-spacing:-.03em;color:var(--text)}
+.eco-sub{display:block;margin-top:4px;font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--muted)}
+.eco-desc{margin-top:14px;font-size:14px;line-height:1.9;color:var(--muted)}
+.eco-features{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.eco-note{margin-top:18px;padding-top:14px;border-top:1px dashed var(--border);font-size:12px;line-height:1.75;color:var(--faint)}
+.eco-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+@media (max-width:980px){
+  .hint-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .eco-panel{grid-template-columns:1fr}
+}
+@media (max-width:800px){
+  .fact-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fact:nth-child(2){border-right:0}
+  .fact:nth-child(-n+2){border-bottom:1px solid var(--border)}
+}
+@media (max-width:560px){
+  .teaser-title{font-size:clamp(34px,10vw,46px)}
+  .hint-grid{grid-template-columns:1fr}
+  .cover-frame{padding:7px;border-radius:22px}
+  .cover-frame img{border-radius:15px;aspect-ratio:16/10}
+  .fact{padding:20px 18px}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要内容</a>
+<header class="site-header" data-header>
+  <div class="container nav-wrap">
+    <a class="brand" href="../../index.html" aria-label="MewCo-AI 首页">
+      <img class="brand-logo" src="../../images/icons/mewcologo.png" alt="MewCo-AI" style="height:36px;width:auto;">
+    </a>
+    <nav class="site-nav" id="site-nav" data-nav aria-label="主导航">
+      <a class="nav-link" href="../../index.html">首页</a><a class="nav-link is-active" href="../../categories/index.html" aria-current="page">项目一览</a><a class="nav-link" href="../../tutorial/use_tutorial/index.html">使用教程</a><a class="nav-link" href="../../tutorial/dev_tutorial/index.html">开发教程</a><a class="nav-link" href="../../about/index.html">关于我们</a>
+      <div class="nav-extra">
+        <a class="btn btn-ghost btn-sm" href="https://github.com/MewCo-AI/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg> GitHub</a>
+        <a class="btn btn-soft btn-sm" href="https://space.bilibili.com/106439263/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="m7 2 3 4M17 2l-3 4M8 12h2M14 12h2"/></svg> 官方 B 站</a>
+      </div>
+    </nav>
+    <div class="nav-actions">
+      <a class="nav-gh" href="https://github.com/MewCo-AI/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg><span>GitHub</span></a>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="切换深色或浅色模式" aria-pressed="false">
+        <span class="theme-opt theme-sun" aria-hidden="true">☀️</span>
+        <span class="theme-opt theme-moon" aria-hidden="true">🌙</span>
+      </button>
+      <button class="menu-btn" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-nav" aria-label="打开导航菜单">
+        <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <section class="teaser-hero">
+    <div class="container">
+      <div class="teaser-copy reveal">
+        <span class="hero-badge"><span class="badge-dot"></span>First Look · 11 月下旬</span>
+        <h1 class="teaser-title">弦月小车<br><span class="grad">Lunaxy UGV</span></h1>
+        <p class="teaser-slogan">开源全域多场景<br>迷你 AI 座舱平台</p>
+        <p class="teaser-lead">
+          一台小车，一套完整的座舱系统。可以被拆开、被理解、被重新定义。
+          <strong>11 月下旬首曝，12 月中旬正式发布。</strong>
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#"><span>关注首曝</span></a>
+          <a class="btn btn-ghost" href="#about"><span>初见</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+        <div class="hero-meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 4.5 4.5L19 6.5"/></svg> 开源</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 4.5 4.5L19 6.5"/></svg> 全域可用</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 4.5 4.5L19 6.5"/></svg> 多场景</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12 4.5 4.5L19 6.5"/></svg> 迷你形态</span>
+        </div>
+      </div>
+      <figure class="cover-figure reveal" style="--d:140ms">
+        <div class="cover-frame">
+          <img src="../../images/lunaxyugv/lunaxyugv_cover.jpg"
+               alt="弦月小车 Lunaxy UGV 首曝封面概念图"
+               width="1280" height="720"
+               fetchpriority="high">
+        </div>
+      </figure>
+    </div>
+  </section>
+  <section class="section" style="padding-bottom:0">
+    <div class="container">
+      <div class="fact-strip reveal">
+        <div class="fact">
+          <div class="fact-k">First Look</div>
+          <div class="fact-v">11 月<span class="grad">下旬</span></div>
+          <div class="fact-d">首曝亮相</div>
+        </div>
+        <div class="fact">
+          <div class="fact-k">Release</div>
+          <div class="fact-v">12 月<span class="grad">中旬</span></div>
+          <div class="fact-d">正式发布</div>
+        </div>
+        <div class="fact">
+          <div class="fact-k">Format</div>
+          <div class="fact-v">线上</div>
+          <div class="fact-d">发布会 + 演示视频</div>
+        </div>
+        <div class="fact">
+          <div class="fact-k">License</div>
+          <div class="fact-v">开源</div>
+          <div class="fact-d">代码与文档同步公开</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-head-main">
+          <span class="eyebrow"><span class="slash">/</span>Preview</span>
+          <h2 class="section-title">初见</h2>
+        </div>
+      </div>
+      <div class="statement-block reveal">
+        <span class="statement-line">足够小，小到塞进一台迷你主机。</span>
+        <span class="statement-line">足够完整，完整到算得上一间<span class="grad">座舱</span>。</span>
+        <span class="statement-line">足够开放，每一行代码都可以被改写。</span>
+        <p class="statement-note">
+          桌面、家中、车里。同一套系统，换一个场景继续用。
+        </p>
+      </div>
+      <figure class="figure reveal">
+        <div class="figure-frame">
+          <img src="../../images/lunaxyugv/lunaxyugv_overview.jpg"
+               alt="弦月小车 Lunaxy UGV 整体概念渲染"
+               loading="lazy">
+        </div>
+      </figure>
+    </div>
+  </section>
+  <section class="section" id="hints" style="padding-top:0">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-head-main">
+          <span class="eyebrow"><span class="slash">/</span>Known</span>
+          <h2 class="section-title">目前已知</h2>
+        </div>
+      </div>
+      <div class="hint-grid">
+        <article class="hint-card reveal">
+          <span class="hint-no">01</span>
+          <h3>完全开源</h3>
+          <p>代码、文档、配置，一起交付。</p>
+        </article>
+        <article class="hint-card reveal" style="--d:70ms">
+          <span class="hint-no">02</span>
+          <h3>有浏览器的地方</h3>
+          <p>就是它的屏幕。</p>
+        </article>
+        <article class="hint-card reveal" style="--d:140ms">
+          <span class="hint-no">03</span>
+          <h3>迷你形态</h3>
+          <p>一整间座舱，装进一台主机。</p>
+        </article>
+        <article class="hint-card reveal" style="--d:210ms">
+          <span class="hint-no">04</span>
+          <h3>不止一种身份</h3>
+          <p>教具、座舱、下一个项目的起点。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="quote-block reveal">
+        <blockquote>持续生长，不设终点。</blockquote>
+        <div class="quote-source">Lunaxy Team · MewCo-AI Studio</div>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="ecosystem" style="padding-top:0">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-head-main">
+          <span class="eyebrow"><span class="slash">/</span>App Store</span>
+          <h2 class="section-title">车机应用商店<span class="grad">生态</span></h2>
+        </div>
+      </div>
+      <div class="eco-panel reveal">
+        <div class="eco-media">
+          <img src="../../images/lunaxyugv/neverrealm_app.jpg"
+               alt="Never Realm 虚境计划车机版应用界面"
+               loading="lazy">
+        </div>
+        <div class="eco-copy">
+          <span class="pill pill-brand">已接入 · 应用商店</span>
+          <h3>Never Realm
+            <span class="eco-sub">虚境计划 · 车机版</span>
+          </h3>
+          <p class="eco-desc">
+            从行车小憩到座舱午休，从专注办公到虚境漫游——Ruby 会记得你偏爱的助眠曲，
+            在你靠边停车时轻声接住疲惫；会陪你用番茄钟处理几封邮件，
+            也会在充电时带你走进花田与小屋。清晨、正午、傍晚、深夜，她的小屋随时间流动，等你回来。
+          </p>
+          <div class="eco-features">
+            <span class="pill">和 Ruby 聊天</span>
+            <span class="pill">语音</span>
+            <span class="pill">哄睡模式</span>
+            <span class="pill">专注模式</span>
+            <span class="pill">声景</span>
+          </div>
+          <p class="eco-note">
+            枫云智能车机系统支持通过内置浏览器打开 Never Realm 网页版，网页版由塔心科技提供和运营。
+          </p>
+          <div class="eco-actions">
+            <a class="btn btn-primary" href="https://www.babelnucleus.com/#projects-section" target="_blank" rel="noopener"><span>了解 Never Realm</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+            <a class="btn btn-soft" href="https://www.babelnucleus.com/" target="_blank" rel="noopener"><span>下载手机版</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 20h16"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="cta-wrap">
+    <div class="container">
+      <div class="cta-panel reveal">
+        <div class="cta-copy">
+          <h2>保持关注，<br>路上见</h2>
+          <p>关注 GitHub 与官方 B 站，首曝与发布信息会第一时间送达。所有项目开源免费。</p>
+          <div class="cta-links"><a href="../../index.html">返回官网首页</a><a href="../../categories/index.html">看看其他项目</a><a href="mailto:mewcoai@foxmail.com">技术支持邮箱</a></div>
+        </div>
+        <div class="cta-actions">
+          <a class="btn btn-light" href="https://github.com/MewCo-AI/" target="_blank" rel="noopener"><span>GitHub 开源社区</span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg></a>
+          <a class="btn btn-glass" href="https://space.bilibili.com/106439263/" target="_blank" rel="noopener"><span>关注官方 B 站</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="m7 2 3 4M17 2l-3 4M8 12h2M14 12h2"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="brand" href="../../index.html" aria-label="MewCo-AI 首页">
+          <img class="brand-logo" src="../../images/icons/mewcologo.png" alt="MewCo-AI" style="height:44px;width:auto;">
+        </a>
+        <p>MewCo-AI（枫云智能）是一支热爱科技与二次元文化的年轻团队，专注开源 AI 助手的公益探索，让每个人都能拥有属于自己的全能型 AI 助手。</p>
+      </div>
+      <div class="footer-col">
+        <h4>产品</h4>
+        <a href="../../project/asstcomm/index.html">枫云AI助手社区版</a>
+        <a href="../../project/asstlinux/index.html">枫云AI助手Linux版</a>
+        <a href="../../project/lunaxyugv/index.html">弦月小车Lunaxy UGV</a>
+      </div>
+      <div class="footer-col">
+        <h4>资源</h4>
+        <a href="../../tutorial/engine/index.html">本地AI引擎插件</a>
+        <a href="../../tutorial/use_tutorial/index.html">使用教程</a>
+        <a href="../../tutorial/dev_tutorial/index.html">开发教程</a>
+        <a href="../../categories/index.html">项目一览</a>
+      </div>
+      <div class="footer-col">
+        <h4>关于</h4>
+        <a href="../../about/index.html">关于我们</a>
+        <a href="../../index.html#news">最新动态</a>
+        <a href="https://github.com/MewCo-AI/" target="_blank" rel="noopener">GitHub 开源社区</a>
+        <a href="https://space.bilibili.com/106439263/" target="_blank" rel="noopener">官方 B 站</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 MewCo-AI 枫云智能工作室<span class="sep">·</span>开源公益项目<span class="sep">·</span>让 AI 乐趣融入美好生活</div>
+      <div class="footer-motto">科技之花应自由绽放 / 为文明进步铺设舞台</div>
+    </div>
+  </div>
+</footer>
+<button class="backtop" type="button" data-backtop aria-label="回到页面顶部"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+</body>
+</html>
