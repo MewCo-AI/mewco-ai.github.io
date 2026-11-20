@@ -93,6 +93,12 @@ html[data-theme="dark"] .teaser-hero::before{background:radial-gradient(circle,r
   .cover-frame img{border-radius:15px;aspect-ratio:16/10}
   .fact{padding:20px 18px}
 }
+.scene-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.scene-item{position:relative;padding:8px;border:1px solid var(--border);border-radius:18px;background:var(--surface);box-shadow:var(--shadow-sm);overflow:hidden}
+.scene-item img{display:block;width:100%;height:auto;border-radius:11px;background:linear-gradient(135deg,rgba(27,92,255,.1),rgba(0,167,196,.06) 55%,transparent 88%),var(--surface-soft)}
+@media (max-width:800px){
+  .scene-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -205,6 +211,33 @@ html[data-theme="dark"] .teaser-hero::before{background:radial-gradient(circle,r
       </figure>
     </div>
   </section>
+  <section class="section" id="scenes" style="padding-top:0">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="section-head-main">
+          <span class="eyebrow"><span class="slash">/</span>Scenes</span>
+          <h2 class="section-title">应用场景</h2>
+        </div>
+      </div>
+      <div class="scene-grid reveal">
+        <figure class="scene-item">
+          <img src="../../images/lunaxyugv/scene1.jpg"
+               alt="弦月小车应用场景一"
+               loading="lazy">
+        </figure>
+        <figure class="scene-item">
+          <img src="../../images/lunaxyugv/scene2.jpg"
+               alt="弦月小车应用场景二"
+               loading="lazy">
+        </figure>
+        <figure class="scene-item">
+          <img src="../../images/lunaxyugv/scene3.jpg"
+               alt="弦月小车应用场景三"
+               loading="lazy">
+        </figure>
+      </div>
+    </div>
+  </section>
   <section class="section" id="hints" style="padding-top:0">
     <div class="container">
       <div class="section-head reveal">
@@ -234,14 +267,6 @@ html[data-theme="dark"] .teaser-hero::before{background:radial-gradient(circle,r
           <h3>不止一种身份</h3>
           <p>教具、座舱、下一个项目的起点。</p>
         </article>
-      </div>
-    </div>
-  </section>
-  <section class="section" style="padding-top:0">
-    <div class="container">
-      <div class="quote-block reveal">
-        <blockquote>持续生长，不设终点。</blockquote>
-        <div class="quote-source">Lunaxy Team · MewCo-AI Studio</div>
       </div>
     </div>
   </section>
